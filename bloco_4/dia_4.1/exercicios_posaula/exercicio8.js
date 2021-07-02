@@ -2,9 +2,9 @@ let a = 1;
 let b = 3;
 let c = 5;
 
-let isEven = false;
+let par = false;
 
 if ((a % 2 === 0 || b % 2 === 0 || c % 2 === 0)) {
-  isEven = true;
+  par = true;
 };
-console.log(isEven);
+console.log(par);

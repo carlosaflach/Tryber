@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="paiDoPai">
+        <div id="pai">
+          <div id="primeiroFilho"></div>
+          <div id="elementoOndeVoceEsta">
+            <div id="primeiroFilhoDoFilho"></div>
+            <div id="segundoEUltimoFilhoDoFilho"></div>
+          </div>
+          Atenção!
+          <div id="terceiroFilho"></div>
+          <div id="quartoEUltimoFilho"></div>
+        </div>
+      </div>   
+      <script>
+       // 1 - Crie um irmão para elementoOndeVoceEsta . 
+			const pai = document.getElementById('pai');
+			const irmaoElementoOndeVoceEsta = document.createElement('div');
+			irmaoElementoOndeVoceEsta.id = 'irmaoElementoOndeVoceEsta';
+			pai.appendChild(irmaoElementoOndeVoceEsta);
+			console.log (irmaoElementoOndeVoceEsta);
+			 // 2 - Crie um filho para elementoOndeVoceEsta .
+			const elementoOndeVoceEsta = document.getElementById('elementoOndeVoceEsta');
+			const filhoDoElementoOndeVoceEsta = document.createElement('div');
+			filhoDoElementoOndeVoceEsta.id = 'filhoDoElementoOndeVoceEsta';
+			elementoOndeVoceEsta.appendChild(filhoDoElementoOndeVoceEsta);
+			console.log(filhoDoElementoOndeVoceEsta);
+			 // 3 - Crie um filho para primeiroFilhoDoFilho .
+			const primeiroFilhoDoFilho = document.getElementById('primeiroFilhoDoFilho');
+			const filhoDoPrimeiroFilhoDoFilho = document.createElement('div');
+			filhoDoPrimeiroFilhoDoFilho.id = 'filhoDoPrimeiroFilhoDoFilho';
+			primeiroFilhoDoFilho.appendChild(filhoDoPrimeiroFilhoDoFilho);
+			console.log(filhoDoPrimeiroFilhoDoFilho)
+			 // 4 - A partir desse filho criado, acesse terceiroFilho.
+			const terceiroFilho = filhoDoPrimeiroFilhoDoFilho.parentElement.parentElement.nextElementSibling;
+			console.log(terceiroFilho);
+
+			</script>
+        
+</body>
+</html>

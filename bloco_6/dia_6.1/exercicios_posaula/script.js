@@ -11,36 +11,57 @@ function createStateOptions() {
   } 
 }
 
+function validateName () {
+  let name = document.querySelector('[name=nome]');
+
+  // Verifica maxLength e required
+  if(name.value.length > 40 || name.value.length === 0) {
+    alert('O nome é invalido');
+  } 
+}
+
+function validateEmail() {
+  // verifica maxLenght, required e formato email.
+  let email = document.querySelector('#email');
+  if(email.value.length > 50 || email.value.length === 0 ) {
+    alert("Email Inválido.")
+  } else if (email.value.includes('@')) {
+    alert('Email Válido');
+  } else {
+    alert('Email Inválido');
+  }
+}
+
+function validateCpf () {
+  // verifica maxLength, required.
+  let cpf = document.querySelector('#cpf');
+  
+  if (cpf.value.length > 11 || cpf.value.length === 0) {
+    alert('CPF Inválido.');
+  } else {
+    alert('Email Válido');
+  }
+}
+
+function validateAdress () {
+  let adress = document.querySelector('#adress');
+  if (adress.value.length > 200 || adress.value.length === 0) {
+    alert('Endereço Errado');
+  }
+}
+
+function handleSubmit (event) {
+  event.preventDefault();
+  validateName();
+  validateEmail();
+  validateCpf();
+  validateAdress();
+}
+
 window.onload = function () {
   createStateOptions();
+  let button = document.querySelector(".submit-button");
+  button.addEventListener('click', handleSubmit);
 }
 
 
-function verificaData() {
-  const dia = document.getElementById('dia');
-  const mes = document.getElementById('mes');
-  const ano = document.getElementById('ano');
- 
-  if (dia.value < 0 | dia.value > 31) {
-    alert('O valor informado para o dia está errado.');
-  }
-  if (mes.value < 0 | mes.value > 12 ){
-    alert('O valor informado para o ano está errado');
-  }
-  if (ano.value < 0) {
-    alert('O ano não pode ser negativo.');
-  }
-}
-
-dia.addEventListener('keyup', verificaData);
-mes.addEventListener('keyup', verificaData);
-ano.addEventListener('keyup', verificaData);
-
-
-const botao = document.getElementById('envia-button');
-
-function prevenir (event) {
-  event.preventDefault();
-}
-
-botao.addEventListener('click', prevenir);

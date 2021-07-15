@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Currículo</title>
+</head>
+<body>
+  <header>
+    <h1>Cadastre o seu currículo</h1>
+    <p>Nosso site oferece uma ferramenta gratuíta para você cadastrar o seu currículo, onde empresas do mundo inteiro terão acesso ao seu currículo e irão avaliar se você é o candidato que elas procuram.</p>
+  </header>
+  <main>
+    <form action="" method="GET">
+      <fieldset>
+        <legend>Dados Pessoais</legend>
+        <div>
+        <label for="nome-completo">Nome Completo:</label>
+        <input type="text" name="Nome" id="nome-completo" required placeholder="Digite aqui oseu nome.." maxlength="40">
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email" required placeholder="Digite aqui o seu email.." maxlength="50">
+      </div>
+      <div>
+        <label for="cpf">CPF:</label>
+        <input type="text" name="cpf" id="cpf" required placeholder="Digite aqui o seu CPF..." autocomplete="off" maxlength="11">
+      </div>
+      <div>
+        <label for="endereco">Endereço:</label>
+        <input type="text" name="endereco" id="endereco" required placeholder="digite seu endereço.." maxlength="200">
+      </div>
+      <div>
+        <label for="cidade">Cidade:</label>
+        <input type="text" name="cidade" id="cidade" required placeholder="digite seu endereço.." maxlength="200">
+      </div>
+      <div>
+        <label for="estado">Estado:</label>
+        <select name="estado" id="estado" required>
+        </select>
+      </div>
+      <div>
+        <span>Tipo de Residência:</span>
+        <label for="casa">
+          <input type="radio" name="residencia" id="casa" required>Casa
+        </label>
+        <label for="apartamento">
+          <input type="radio" name="residencia" id="apartamento" required>Apartamento
+        </label>
+      </div>
+      </fieldset>
+      <fieldset>
+        <legend>Informações profissionais</legend>
+        <div>
+          <label for="resumo">Resumo de currículo:</label>
+          <textarea name="resumo-curriculo" id="resumo" cols="30" rows="5" maxlength="1000" required placeholder="Digitei aqui um pouco mais sobre a sua trajetória profissional.."></textarea>
+        </div>
+        <div>
+          <label for="cargo">Cargo:</label>
+          <input type="text" name="cargo" id="cargo" maxlength="40" required>          
+        </div>
+        <div>
+          <label for="">Descrição do Cargo:</label>
+          <textarea name="descricao-cargo" id="descricao-cargo" cols="30" rows="5" required maxlength="500" placeholder="Digite aqui a descrição do cargo.."></textarea>
+        </div>
+        <div>
+          <label for="data-inicio">Data de Início:</label>
+          <label for="dia">Dia:</label>
+          <input type="text" name="data-inicio" id="dia" required>
+          <label for="dia">Mês:</label>
+          <input type="text" name="data-inicio" id="mes" required>
+          <label for="dia">Ano:</label>
+          <input type="text" name="data-inicio" id="ano"required>
+        </div>
+        <button type="submit" id="envia-button">Enviar</button>
+      </fieldset>
+    </form>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

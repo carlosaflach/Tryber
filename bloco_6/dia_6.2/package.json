@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "just-validate": "^1.5.0"
+    "just-validate": "^1.5.0",
+    "pikaday": "^1.8.2"
   }
 }

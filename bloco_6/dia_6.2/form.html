@@ -3,94 +3,104 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastro de Currículo</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" type="text/css" href="pikaday.css"> -->
+  <title>Formulario-curriculo</title>
 </head>
 
 <body>
-  <header class="text-center mt-3">
-    <h1>Cadastre o seu currículo</h1>
-    <p>Nosso site oferece uma ferramenta gratuíta para você cadastrar o seu currículo, onde empresas do mundo inteiro
-      terão acesso ao seu currículo e irão avaliar se você é o candidato que elas procuram.</p>
+  <header class="form-header">
+    <h1>Formulário para cadastro de currículo</h1>
+    <p>Preencha os campos abaixo.</p>
   </header>
   <main>
-    <form action="" method="GET" class="js-form">
-      <fieldset>
-        <legend>Dados Pessoais</legend>
+    <form method="GET" action="" class="js-form">
+      <fieldset class="form-group">
         <div class="mb-3">
-          <label class="form-label" for="nome-completo">Nome Completo:</label>
-          <input class="form-control" data-validate-field="name" type="text" name="nome" id="nome-completo" required
-            placeholder="Digite aqui o seu nome.." maxlength="40">
+          <label class="form-label" for="name">Nome: </label>
+          <input autocomplete="off" data-validate-field="name" placeholder="Nome completo" class="form-control"
+            type="text" name="name" id="name" maxlength="40" required>
         </div>
         <div class="mb-3">
-          <label class="form-label" for="email">Email:</label>
-          <input class="form-control" data-validate-field="email" type="text" name="email" id="email" required
-            placeholder="Digite aqui o seu email.." maxlength="50">
+          <label class="form-label" for="email">Endereço de e-mail: </label>
+          <input autocomplete="off" data-validate-field="email" placeholder="Digite seu email" class="form-control"
+            class="email-input" type="email" name="email" id="email" maxlength="50" required
+            aria-describedby="emailHelp">
+          <div id="emailHelp" class="form-text">Seu e-mail não será compartilhado.</div>
         </div>
         <div class="mb-3">
-          <label class="form-label" for="cpf">CPF:</label>
-          <input class="form-control" type="text" data-validate-field="cpf"  name="cpf" id="cpf" required placeholder="Digite aqui o seu CPF..."
-            autocomplete="off" maxlength="11">
+          <label class="form-label" for="cpf-number">CPF: </label>
+          <input autocomplete="off" data-validate-field="cpf" placeholder="000.000.000-00" class="form-control"
+            type="text" name="cpf" id="cpf-number" maxlength="11" required required aria-describedby="cpf-info">
+          <div id="cpf-info" class="form-text">Seu CPF não será compartilhado.</div>
         </div>
         <div class="mb-3">
-          <label class="form-label" for="adress">Endereço:</label>
-          <input class="form-control" type="text" data-validate-field="adress"  name="adress" id="adress" required placeholder="digite seu endereço.."
-            maxlength="200">
+          <label class="form-label" for="address">Endereço: </label>
+          <input autocomplete="off" data-validate-field="address" placeholder="Endereço" class="form-control"
+            type="text" name="address" id="address" maxlength="200" required>
         </div>
         <div class="mb-3">
-          <label class="form-label" for="cidade">Cidade:</label>
-          <input class="form-control" type="text"  data-validate-field="city" name="cidade" id="cidade" required placeholder="digite seu endereço.."
-            maxlength="200">
+          <label class="form-label" for="city">Cidade: </label>
+          <input autocomplete="off" data-validate-field="city" placeholder="Cidade" class="form-control" type="text"
+            name="city" id="city" maxlength="200" required>
         </div>
         <div class="mb-3">
-          <label class="form-label" for="estado">Estado:</label>
-          <select class="form-select" data-validate-field="state"  name="estado" id="estado" required>
+          <label class="form-label" for="state">Estado: </label>
+          <select class="form-select" data-validate-field="state" name="state" id="state" required>
           </select>
         </div>
-        <div class="mx-3">
-          <span>Tipo de Residência:</span>
-          <label class="form-check-label" for="casa">
-            <input class="form-check-input mx-1" data-validate-field="radio"  type="radio" name="residencia" id="casa" required>Casa
-          </label>
-          <label class="form-check-label " for="apartamento">
-            <input class="form-check-input mx-1" type="radio" data-validate-field="radio"  name="residencia" id="apartamento" required>Apartamento
-          </label>
+        <div class="form-group">
+          <label for="type" class="form-label">Tipo:</label>
+          <div class="form-check">
+            <input class="form-check-input" data-validate-field="radio" type="radio" name="flexRadioDefault" id="casa"
+              name="type">
+            <label class="form-check-label" for="casa">
+              Casa
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" data-validate-field="radio" type="radio" name="flexRadioDefault"
+              id="apartamento" name="type" checked>
+            <label class="form-check-label" for="apartamento">
+              Apartamento
+            </label>
+          </div>
         </div>
       </fieldset>
-      <div class="my-3">
-        <legend>Informações profissionais</legend>
-        <label class="form-label" for="resumo">Resumo de currículo:</label>
-        <textarea class="form-control" data-validate-field="text"  name="resumo-curriculo" id="resumo" cols="30" rows="5" maxlength="1000" required
-          placeholder="Digitei aqui um pouco mais sobre a sua trajetória profissional.."></textarea>
-      </div>
-      <div class="mb-3">
-        <label class="form-label" for="cargo">Cargo:</label>
-        <input class="form-control" data-validate-field="cargo"  type="text" name="cargo" id="cargo" maxlength="40" required>
-      </div>
-      <div class="mb-3">
-        <label class="form-label" for="">Descrição do Cargo:</label>
-        <textarea class="form-control" data-validate-field="descricao"  name="descricao-cargo" id="descricao-cargo" cols="30" rows="5" required
-          maxlength="500" placeholder="Digite aqui a descrição do cargo.."></textarea>
-      </div>
-      <div class="mb-3">
-        <label class="form-label" for="datepicker">Data de Inicio:</label>
-        <input class="form-control" type="text"  data-validate-field="date" name="data-inicio" id="datepicker" autocomplete="off" required>
-      </div>
-      <button class="submit-buttonbtn btn-primary mb-3 ms-3" type="submit" id="envia-button">Enviar</button>
+      <fieldset class="form-group">
+        <div class="mb-3">
+          <label class="form-label" for="cv-resume">Resumo do currículo: </label>
+          <textarea class="form-control" data-validate-field="text" id="cv-resume" name="cv-resume" maxlength="1000"
+            rows="3" required></textarea>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="position">Cargo: </label>
+          <input autocomplete="off" data-validate-field="position" class="form-control" type="text" name="position"
+            id="position" maxlength="40" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="description">Descrição do cargo: </label>
+          <input autocomplete="off" data-validate-field="description" class="form-control" type="text" id="description"
+            name="description" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="start-date">Data de início: </label>
+          <input autocomplete="off" data-validate-field="date" class="form-control" type="text" placeholder="DD/MM/AAAA"
+            id="datepicker" name="start-date" required>
+        </div>
+      </fieldset>
+      <button type="submit" class="btn btn-primary submit-button" type="button">Enviar</button>
+      <button type="button" class="btn btn-danger clear-button">Limpar</button>
     </form>
   </main>
-  <script src="script.js"></script>
-  <script src="pikaday.js"></script>
-  <script src="./path/to/just-validate.min.js"></script>
-  </script>
+  <section class="form-data"></section>
+  <!-- <script src="moment.js"></script> -->
+  <!-- <script src="pikaday.js" type="module"></script> -->
+  <script src="just-validate.min.js"></script>
+  <script src="script.js" type="module"></script>
 </body>
+
 </html>

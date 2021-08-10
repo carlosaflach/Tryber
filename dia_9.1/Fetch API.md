@@ -5,6 +5,7 @@ No contexto do Front-end, a maioria dos casos em que precisamos utilizar funçõ
 A Fetch API contém uma série de recursos desenvolvidos para lidar com requisições http no JavaScript. A função primária é a fetch() , utilizada para fazer chamadas às URL's das APIs . Trata-se de uma função assíncrona, baseada em uma promise.
 
 >Uma API, por sua vez, é uma forma de trafegar dados entre aplicações.
+
 ![API Image](API.png)
 
 A função `fetch` recebe dois parâmetros:

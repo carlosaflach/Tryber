@@ -118,6 +118,8 @@ Observe que a saída é a o array [2, 3, 1], isso ocorre pois como a função é
 
 >Ou seja, o array recebe primeiro o 2 , depois o 3 , e após os 3 segundos do setTimeout , ele recebe o 1 .
 
+O `setTimeout` é uma ferramenta apenas didática.
+
 ---
 
 # Callbacks

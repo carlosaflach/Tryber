@@ -36,4 +36,4 @@ async function sendJokeToFriend(name) {
   console.log(message);
 }
 
-sendJokeToFriend("Anna");
+sendJokeToFriend("Daniboy");

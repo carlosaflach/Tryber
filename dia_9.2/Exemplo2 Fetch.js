@@ -20,3 +20,4 @@ function sendJokeToFriend(name) {
 }
 
 sendJokeToFriend("Anna");
+

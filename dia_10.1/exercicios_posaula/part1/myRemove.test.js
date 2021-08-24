@@ -16,4 +16,4 @@ describe("Test myRemove function", () => {
   it('Test if myRemove([1, 2, 3, 4], 5) returns [1, 2, 3, 4]', () => {
     expect(myRemove([1, 2, 3, 4], 5)).toEqual([1, 2, 3, 4]);
   });
-})
+});

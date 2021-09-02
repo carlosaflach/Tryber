@@ -18,18 +18,21 @@ class App extends React.Component {
   }
 
   handleButtonOne() {
-    console.log('Clicou no botão 1!');
-    console.log(this);
+    this.setState(() => ({
+        clicksBtnOne: 1,
+    }));
   }
 
   handleButtonTwo() {
-    console.log('Clicou no botão 2!');
-    console.log(this);
+    this.setState(() => ({
+      clicksBtnTwo: 1,
+  }));
   }
 
   handleButtonThree() {
-    console.log('Clicou no botão 3!');
-    console.log(this);
+    this.setState(() => ({
+      clicksBtnThree: 1,
+  }));
   }
 
 

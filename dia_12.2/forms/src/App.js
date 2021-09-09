@@ -1,5 +1,6 @@
 import './App.css';
 import React from 'react';
+import Corpo from './Corpo';
 
 class App extends React.Component {
   constructor() {
@@ -9,6 +10,7 @@ class App extends React.Component {
     this.state = {
       name: '',
       email: '',
+      text: '',
       checkbox: false,
       select: '',
     }
@@ -28,42 +30,9 @@ class App extends React.Component {
       <div>
         <h1> Formulário em React: Componentes Controlados</h1>
         <form>
-          <fieldset>
-            <label htmlFor="name"> Name:
-              <input
-                type='name'
-                onChange={this.handleChange}
-                name='name'
-                value={this.state.name}>
-              </input>
-            </label>
-            <label htmlFor="email"> Email:
-              <input type='email'
-                onChange={this.handleChange}
-                name='email'
-                value={this.state.email} >
-              </input>
-            </label>
-            <label htmlFor="text"> Informações complementares:
-              <textarea name="text"></textarea>
-            </label>
-            <label htmlFor="select">Estado:
-              <select onChange={this.handleChange} name="select">
-                <option></option>
-                <option>SC</option>
-                <option>RS</option>
-                <option>RJ</option>
-              </select>
-            </label>
-            <label htmlFor="check"> Presente:
-              <input type="checkbox" name="check"
-                onChange={this.handleChange}
-              ></input>
-            </label>
-            <label>
-              <input type="file"></input>
-            </label>
-          </fieldset>
+          <Corpo name={this.state.name} email={this.state.email} checkbox={this.state.checkbox} 
+          select={this.state.select} handleChange={this.handleChange} text={this.state.text}
+          />
         </form>
       </div>
     )

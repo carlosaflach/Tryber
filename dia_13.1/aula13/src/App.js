@@ -3,8 +3,8 @@ import Counter from "./Counter";
 
 function App() {
   return (
-    //<DadJoke />
-    <Counter />
+    <DadJoke />
+    //<Counter />
   );
 }
 

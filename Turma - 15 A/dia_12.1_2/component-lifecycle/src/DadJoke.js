@@ -16,9 +16,13 @@ class DadJoke extends React.Component {
 
   // Uma maneira de fazer
   fetchJoke() {
+    // this.setState({}, () => // this.state vem atualizado) // input
+    // filtragem this.state
+    // this.setState({}) // array filtrado
     this.setState(
       {loading: true,}, // primeiro parâmetro da setState
       // segundo parâmetro do setState.
+      // O uso da callback é interessante para garantir que o estado será setado, somente depois que ele for atualizado.
       async () => {
       const requestHeaders = { headers: { Accept: 'application/json' } }  // porque??
       const requestReturn = await fetch('https://icanhazdadjoke.com/', requestHeaders)
@@ -29,7 +33,7 @@ class DadJoke extends React.Component {
     })
     })
   }
-
+  
  
   componentDidMount() {
     this.fetchJoke();

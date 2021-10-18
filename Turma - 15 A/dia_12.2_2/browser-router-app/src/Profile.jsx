@@ -5,7 +5,7 @@ export default class Profile extends Component {
   render() {
     return (
       <div>
-        <p> Carlos Afonso, mestre dos magos da programação </p>
+        <p> Carlos Afonso, {this.props.name} </p>
         <Link to='/'> Voltar a Home </Link>
       </div>
     )

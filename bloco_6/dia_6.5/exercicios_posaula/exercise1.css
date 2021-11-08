@@ -1,0 +1,55 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-size: 20px;
+  margin: 50px;
+
+}
+h1 {
+  font-size: xx-large;
+}
+h2 {
+  font-size: x-large;
+}
+
+img {
+    max-width: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+figure {
+    margin: 0;
+}
+
+@media screen and (min-width: 800px) {
+  body {
+    background-color: blanchedalmond;
+  }
+
+  figure{
+    float:left;
+    width: 45%;
+    margin-right: 4.5%;
+  }
+
+}
+
+@media screen and (min-width: 1020px) {
+  body {
+    background: rgba(0,255,0,.2);
+    margin: 25px 10%;
+    max-width: 1130px;
+  }
+
+  figure {
+    width: 30%;
+    margin-right: 2.5%;
+  }
+}

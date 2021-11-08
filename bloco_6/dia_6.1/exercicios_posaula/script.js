@@ -50,131 +50,131 @@ function validateAdress() {
   }
 }
 
-// function handleSubmit(event) {
-//   event.preventDefault();
-//   validateName();
-//   validateEmail();
-//   validateCpf();
-//   validateAdress();
-// }
+function handleSubmit(event) {
+  event.preventDefault();
+  validateName();
+  validateEmail();
+  validateCpf();
+  validateAdress();
+}
 
 window.onload = function () {
   createStateOptions();
   let button = document.querySelector(".submit-button");
-  // button.addEventListener('click', handleSubmit);
+  button.addEventListener('click', handleSubmit);
 }
 
-var picker = new Pikaday({
-  field: document.getElementById('datepicker'),
-  format: 'D/M/YYYY',
-  toString(date, format) {
-    // you should do formatting based on the passed format,
-    // but we will just return 'D/M/YYYY' for simplicity
-    const day = date.getDate();
-    const month = date.getMonth() + 1;
-    const year = date.getFullYear();
-    return `${day}/${month}/${year}`;
-  },
-  parse(dateString, format) {
-    // dateString is the result of `toString` method
-    const parts = dateString.split('/');
-    const day = parseInt(parts[0], 10);
-    const month = parseInt(parts[1], 10) - 1;
-    const year = parseInt(parts[2], 10);
-    return new Date(year, month, day);
-  }
-});
+// var picker = new Pikaday({
+//   field: document.getElementById('datepicker'),
+//   format: 'D/M/YYYY',
+//   toString(date, format) {
+//     // you should do formatting based on the passed format,
+//     // but we will just return 'D/M/YYYY' for simplicity
+//     const day = date.getDate();
+//     const month = date.getMonth() + 1;
+//     const year = date.getFullYear();
+//     return `${day}/${month}/${year}`;
+//   },
+//   parse(dateString, format) {
+//     // dateString is the result of `toString` method
+//     const parts = dateString.split('/');
+//     const day = parseInt(parts[0], 10);
+//     const month = parseInt(parts[1], 10) - 1;
+//     const year = parseInt(parts[2], 10);
+//     return new Date(year, month, day);
+//   }
+// });
 
-new JustValidate('.js-form', {
-  rules: {
-    name: {
-      required: true,
-      minLength: 3,
-      maxLength:40
-    },
-    email: {
-      required: true,
-      email: true,
-      maxLength: 50
-    },
-    cpf: {
-      required: true,
-      maxLength: 11
-    },
-    adress: {
-      required: true,
-      maxLength: 200
-    },
-    city: {
-      required: true,
-      maxLength: 28
-    },
-    state: {
-      required: true,
-    },
-    radio: {
-      required: true,
-      maxLength: 200,
-    },
-    text: {
-      require: true,
-      maxLength: 1000
-    },
-    cargo: {
-      required:true,
-      maxLength: 40
-    },
-    descricao: {
-      required: true,
-      maxLength: 500
-    },
-    date: {
-      required:true,
-    },
-    messages: {
-      name: {
-        required: 'O campo de nome é obrigatório.',
-        maxLength: 'O limite é de 40 caracteres.'
-      },
-      email: {
-        required: 'O campo de email é obrigatório.',
-        email: 'O email digitado não é válido.',
-        maxLength: 'O limite é de 50 caracteres.'
-      },
-      cpf: {
-        required: 'O campo de CPF é obrigatório.',
-        maxLength: 'O limite é de 11 caracteres.'
-      },
-      address: {
-        required: 'O campo endereço é obrigatório.',
-        maxLength: 'O limite é de 200 caracteres.'
-      },
-      city: {
-        required: 'O campo cidade é obrigatório.',
-        maxLength: 'O limite é de 28 caracteres.'
-      },
-      state: {
-        required: 'O campo estado é obrigatório.',
-      },
-      radio: {
-        required: 'A escolha de um item é obrigatória.',
-      },
-      text: {
-        required: 'Este campo é obrigatório.',
-        maxLength: 'O limite é de 1000 caracteres.'
-      },
-      cargo: {
-        required: 'Este campo é obrigatório.',
-        maxLength: 'O limite é de 40 caracteres.'
-      },
-      descricao: {
-        required: 'Este campo é obrigatório.',
-        maxLength: 'O limite é de 500 caracteres.'
-      },
-      date: {
-        required: 'Este campo é obrigatório.',
-      }
-    },
-    submitHandler: function (form, values) {
-      console.log(form, values);
-    }}});
+// new JustValidate('.js-form', {
+//   rules: {
+//     name: {
+//       required: true,
+//       minLength: 3,
+//       maxLength:40
+//     },
+//     email: {
+//       required: true,
+//       email: true,
+//       maxLength: 50
+//     },
+//     cpf: {
+//       required: true,
+//       maxLength: 11
+//     },
+//     adress: {
+//       required: true,
+//       maxLength: 200
+//     },
+//     city: {
+//       required: true,
+//       maxLength: 28
+//     },
+//     state: {
+//       required: true,
+//     },
+//     radio: {
+//       required: true,
+//       maxLength: 200,
+//     },
+//     text: {
+//       require: true,
+//       maxLength: 1000
+//     },
+//     cargo: {
+//       required:true,
+//       maxLength: 40
+//     },
+//     descricao: {
+//       required: true,
+//       maxLength: 500
+//     },
+//     date: {
+//       required:true,
+//     },
+//     messages: {
+//       name: {
+//         required: 'O campo de nome é obrigatório.',
+//         maxLength: 'O limite é de 40 caracteres.'
+//       },
+//       email: {
+//         required: 'O campo de email é obrigatório.',
+//         email: 'O email digitado não é válido.',
+//         maxLength: 'O limite é de 50 caracteres.'
+//       },
+//       cpf: {
+//         required: 'O campo de CPF é obrigatório.',
+//         maxLength: 'O limite é de 11 caracteres.'
+//       },
+//       address: {
+//         required: 'O campo endereço é obrigatório.',
+//         maxLength: 'O limite é de 200 caracteres.'
+//       },
+//       city: {
+//         required: 'O campo cidade é obrigatório.',
+//         maxLength: 'O limite é de 28 caracteres.'
+//       },
+//       state: {
+//         required: 'O campo estado é obrigatório.',
+//       },
+//       radio: {
+//         required: 'A escolha de um item é obrigatória.',
+//       },
+//       text: {
+//         required: 'Este campo é obrigatório.',
+//         maxLength: 'O limite é de 1000 caracteres.'
+//       },
+//       cargo: {
+//         required: 'Este campo é obrigatório.',
+//         maxLength: 'O limite é de 40 caracteres.'
+//       },
+//       descricao: {
+//         required: 'Este campo é obrigatório.',
+//         maxLength: 'O limite é de 500 caracteres.'
+//       },
+//       date: {
+//         required: 'Este campo é obrigatório.',
+//       }
+//     },
+//     submitHandler: function (form, values) {
+//       console.log(form, values);
+//     }}});

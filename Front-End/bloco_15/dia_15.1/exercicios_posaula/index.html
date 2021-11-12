@@ -58,6 +58,15 @@
             return state;
         }
       }
+
+      const btnInc = document.getElementById('next');
+      const btnDec = document.getElementById('previous');
+      btnInc.addEventListener('click', () => {
+        store.dispatch({ type: NEXT_COLOR });
+      });
+      btnDec.addEventListener('click', () => {
+        store.dispatch({ type: PREVIOUS_COLOR });
+      });
       const store = createStore(reducer);
     </script>
   </body>

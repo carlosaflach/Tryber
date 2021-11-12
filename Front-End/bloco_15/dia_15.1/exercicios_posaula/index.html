@@ -38,10 +38,17 @@
         index: 0,
       };
 
+      // Actions types
+      const NEXT_COLOR = 'NEXT_COLOR';
+      const PREVIOUS_COLOR = 'PREVIOUS_COLOR';
+
       const reducer = (state = ESTADO_INICIAL, action) => {
         switch (action.type) {
-          case "Login":
-            return
+          case NEXT_COLOR:
+            return {
+              ...state,
+              index: state.index === state.colors.length - 1 ? 0 : state.index + 1,
+            }
           default:
             return state;
         }

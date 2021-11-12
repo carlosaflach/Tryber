@@ -58,6 +58,7 @@
             return state;
         }
       }
+      const store = Redux.createStore(reducer);
 
       const btnInc = document.getElementById('next');
       const btnDec = document.getElementById('previous');
@@ -67,7 +68,12 @@
       btnDec.addEventListener('click', () => {
         store.dispatch({ type: PREVIOUS_COLOR });
       });
-      const store = createStore(reducer);
+
+      store.subscribe(() => {
+        const {colors, index} = store.getState();
+        document.getElementById('value').innerHTML = colors[index];
+        document.getElementById('container').style.backgroundColor = colors[index];
+      });
     </script>
   </body>
 </html>

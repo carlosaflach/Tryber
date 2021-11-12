@@ -37,6 +37,16 @@
         colors: ['white', 'black', 'red', 'green', 'blue', 'yellow'],
         index: 0,
       };
+
+      const reducer = (state = ESTADO_INICIAL, action) => {
+        switch (action.type) {
+          case "Login":
+            return
+          default:
+            return state;
+        }
+      }
+      const store = createStore(reducer);
     </script>
   </body>
 </html>

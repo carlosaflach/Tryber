@@ -64,6 +64,21 @@
 
       const rootReducer = Redux.combineReducers({ meuPrimeiroReducer, meuSegundoReducer });
       const store = Redux.createStore(rootReducer);
+
+      window.onload = () => {
+      setTimeout(() => {
+        store.dispatch({
+          type: 'ALTERAR_PRIMEIRO_NOME_E_SOBRENOME',
+          nome: 'Bruna',
+          sobrenome: 'Santana Oliveira',
+        });
+        store.dispatch({
+          type: 'ALTERAR_SEGUNDO_NOME_E_SOBRENOME',
+          nome: 'Rodrigo',
+          sobrenome: 'Santos da Silva',
+        });
+      }, 2000);
+    };
     </script>
   </body>
 </html>

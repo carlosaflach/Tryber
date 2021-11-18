@@ -1,5 +1,4 @@
-// Action type:
-export const NEW_ACTION = 'NEW_ACTION'
+// src/actions/index.js
+const addAssignment = (value) => ({ type: 'ADD_ELEMENT', value });
 
-// Action Creator => Função que cria a action, e retorna a action.
-export const newAction = (state) => ({ type: NEW_ACTION, state });
+export default addAssignment;

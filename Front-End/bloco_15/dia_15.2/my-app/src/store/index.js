@@ -1,5 +1,8 @@
+// src/store/index.js
 import { createStore, combineReducers } from 'redux';
-import rootReducer from '../reducers';
+import listReducer from '../reducers';
+
+const rootReducer = combineReducers({ listReducer });
 
 const store = createStore(rootReducer);
 

@@ -6,7 +6,7 @@ export default class Daugther extends Component {
     return (
       <MyContext.Consumer>
         {
-          value => (
+          value => ( // Aqui é utilziado o render props, na passagem de informação, onde é necessário ter apenas um nó externo, podendo ter mais do que um interno, mas SEMPRE UM EXTERNO, nesse caso a div.
             <div>
               <p>{`Eu tenho ${value.money} para gastar`}</p>
             <button onClick={value.spendMoney}>Pedir um IFOOD</button>

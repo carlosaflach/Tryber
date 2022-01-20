@@ -1,21 +1,21 @@
 version: '3'
 services:
-  web:
-    build: .
-    image: ubuntu/nginx:latest
-    volumes:
-    - ./dia_19.3:/usr/share/nginx/html
-    ports:
-    - 8080:80
-    depends_on:
-      - mydb
-  
-  mydb:
-    image: mysql:5.7
+  frontend:
+    image: mjgargani/compose-example:frontend-trybe1.0
     restart: always
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
     ports:
-      - 3306:3306
-    volumes:
-      - ./db:/var/lib/mysql
+      - 3000:3000
+    depends_on:
+      - "backend"
+  backend:
+    image: mjgargani/compose-example:backend-trybe1.0
+    restart: always
+    ports:
+      - 3001:3001
+    environment:
+      - DB_HOST=database
+    depends_on:
+      - "database"
+  database:
+    image: mjgargani/compose-example:database-trybe1.0
+    restart: always

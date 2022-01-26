@@ -1,0 +1,5 @@
+SHOW TABLES;
+USE sakila;
+SHOW TABLES;
+CREATE DATABASE trybe;
+use trybe;

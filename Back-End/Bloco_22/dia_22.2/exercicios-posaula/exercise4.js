@@ -25,4 +25,15 @@ const getSimpsonById = async (id) => {
   return console.log(chosenSimpson); 
 }
 
-getSimpsonById(10)
+getSimpsonById(1)
+
+const removeSimpson = async () => {
+  const simpsonRaw = await fs.readFile('./simpsons.json', 'utf-8');
+  const simpsonJson = await JSON.parse(simpsonRaw);
+  
+  const filteredArray = simpsonJson.filter((simpson) => simpson.id !== '10' && simpson.id !== '6')
+
+  await fs.writeFile('./simpsons.json', JSON.stringify(filteredArray));
+}
+
+removeSimpson()

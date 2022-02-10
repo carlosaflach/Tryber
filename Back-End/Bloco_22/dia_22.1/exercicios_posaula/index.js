@@ -1,32 +1,32 @@
-const imc = require('./imc');
-const { readName, readAge, readHeight, readWeight } = require('./readfile');
+const readline = require('readline-sync');
 
-const name = readName();
-const age = readAge();
-const height = readHeight();
-const weight = readWeight();
+const scripts = [
+  { name: "Calculate IMC", script: './imc.js'},
+  { name: "Calculate Speed Average", script: './velocidade.js'},
+  { name: "Guessing Game", script: './sorteio.js'}
+]
 
+// Iteramos sobre os scripts para criar a lista numerada
+let mensagem = scripts
+  .map((script, index) => `${index + 1} - ${script.name}`);
 
-const printImc = () => {
-  if(imc(height, weight) < 18.5)  {
-    console.log(`Hello ${name}, you are ${age} years old, and your IMC is ${imc(height, weight)}, you're underweight`);
-    return;
-  } else if(imc(height, weight) >= 18.5 && imc(height, weight) <= 24.9 ) {
-    console.log(`Hello ${name}, you are ${age} years old, and your IMC is ${imc(height, weight)}, you're with ideal weight`);
-    return;
-  } else if(imc(height, weight) >= 25 && imc(height, weight) <= 29.9 ) {
-    console.log(`Hello ${name}, you are ${age} years old, and your IMC is ${imc(height, weight)}, you're overweight`);
-    return;
-  }  else if(imc(height, weight) >= 30 && imc(height, weight) <= 34.9 ) {
-    console.log(`Hello ${name}, you are ${age} years old, and your IMC is ${imc(height, weight)}, you're with grade I obesity`);
-    return;
-  } else if(imc(height, weight) >= 35 && imc(height, weight) <= 39 ) {
-    console.log(`Hello ${name}, you are ${age} years old, and your IMC is ${imc(height, weight)}, you're with grade II obesity`);
-    return;
-  } else {
-    console.log(`Hello ${name}, you are ${age} years old, and your IMC is ${imc(height, weight)}, you're with grade III obesity`);
-  }
-  
-}
+// Adicionamos uma linha a mais no começo da mensagem
+mensagem.unshift(`Escolha um número para executar o script correspondente:
+`);
 
-printImc();
+// Adicionamos uma linha a mais no final.
+mensagem.push(" ")
+
+// Juntamos todos os elementos em uma string, separando-os por uma quebra de linha
+mensagem = mensagem.join('\n');
+
+const scriptNumber = readline.questionInt(mensagem) - 1;
+
+const script = scripts[scriptNumber];
+
+if (!script) return console.log('Número inválido. Saindo');
+
+// Chamamos o script selecionado
+// Note que, no dia a dia, é mais comum utilizarmos outras formas de executar arquivos externos
+// No entanto, para fins didáticos, o `require` nos atende por enquanto.
+require(script.script);

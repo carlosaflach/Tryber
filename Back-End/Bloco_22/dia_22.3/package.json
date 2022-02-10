@@ -1,0 +1,21 @@
+{
+  "name": "dia_22.3",
+  "version": "1.0.0",
+  "description": "Tests with mocha chai",
+  "main": "calcMedia.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "chai": "^4.3.6"
+  },
+  "devDependencies": {
+    "mocha": "^9.2.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha tests"
+  },
+  "author": "Carlos A. Flach",
+  "license": "ISC"
+}

@@ -10,15 +10,16 @@ const promiseFunc = (a, b, c) => {
   })
 }
 
+// promiseFunc(10,20,40)
+// .then(resolve => console.log(resolve))
+// .catch(error => console.log(error))
 
-promiseFunc(10,20,40)
-.then(resolve => console.log(resolve))
-.catch(error => console.log(error))
+// promiseFunc(1,20,1)
+// .then(resolve => console.log(resolve))
+// .catch(error => console.log(error))
 
-promiseFunc(1,20,1)
-.then(resolve => console.log(resolve))
-.catch(error => console.log(error))
+// promiseFunc(10,'s',40)
+// .then(resolve => console.log(resolve))
+// .catch(error => console.log(error))
 
-promiseFunc(10,'s',40)
-.then(resolve => console.log(resolve))
-.catch(error => console.log(error))
+module.exports = promiseFunc;

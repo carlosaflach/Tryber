@@ -1,5 +1,7 @@
 const verifyNumberSignal = (num) => {
-  if (num > 0) {
+  if (typeof num !== 'number') {
+    return "The insert value it's not a number. Please insert a number."
+  } else if (num > 0) {
     return "It's positive!";
   } else if (num < 0) {
     return "It's negative!";
@@ -7,3 +9,5 @@ const verifyNumberSignal = (num) => {
     return "It's neutral";
   }
 }
+
+module.exports = verifyNumberSignal;

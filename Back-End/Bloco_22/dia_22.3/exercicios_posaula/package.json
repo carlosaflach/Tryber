@@ -1,0 +1,20 @@
+{
+  "name": "testes_automatizados_mocha_e_chai",
+  "version": "1.0.0",
+  "description": "Aula de testes automatizados com mocha e chai",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test.js"
+  },
+  "keywords": [
+    "mocha",
+    "chai"
+  ],
+  "author": "Carlos A. Flach",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^9.2.0",
+    "sinon": "^13.0.1"
+  }
+}

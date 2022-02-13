@@ -1,3 +1,5 @@
+// Exercise 1 ~ 3;
+
 const verifyNumberSignal = (num) => {
   if (typeof num !== 'number') {
     return "The insert value it's not a number. Please insert a number."

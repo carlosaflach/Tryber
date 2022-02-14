@@ -38,6 +38,15 @@ app.get('/recipes/:id', function (req, res) {
   res.status(200).json(recipe);
 });
 
+app.get('/drinks/:id', function (req, res) {
+  const { id } = req.params;
+  const drink = drinks.find((drink) => drink.id === parseInt(id));
+
+  if(!drink) return res.status(400).json({ message: 'Drink not found!'});
+
+  res.status(200).json(drink);
+});
+
 app.listen(3001, () => {
   console.log('Aplicação ouvindo na porta 3001');
 });

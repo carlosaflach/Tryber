@@ -53,6 +53,11 @@ app.get('/recipes/:id', function (req, res) {
   res.status(200).json(recipe);
 });
 
+app.post('/drinks', function (req, res) {
+  const { id, name, price } = req.body;
+  drinks.push({ id, name, price});
+  res.status(201).json({ message: 'Recipe created successfully!'});
+});
 
 app.get('/drinks', function (req, res) {
   res.json(drinks.sort((a,b) => {

@@ -1,7 +1,7 @@
 // Estrutura básica aplicação express.
 const express = require('express');
 
-const app = express(); // 1 - Inicializa a aplicação Express
+const app = express(); // 1 - Inicializa o framework Express
 
 app.get('/hello', handleHelloWorldRequest); // 2
 

@@ -18,9 +18,7 @@ app.get('/simpsons', rescue(async (req, res) => {
   res.status(200).json(simpsons);
 }))
 
-app.get(
-  '/simpsons/:id',
-  rescue(async (req, res) => {
+app.get('/simpsons/:id',rescue(async (req, res) => {
     const simpsons = await simpsonsUtils.getSimpsons();
 
     const simpson = simpsons.find(({ id }) => id === req.params.id);
@@ -32,6 +30,16 @@ app.get(
     return res.status(202).json(simpson);
   })
 );
+
+app.post('/simpsons', rescue(async (req, res) => {
+  const { id, name } = req.body;
+  const simpsons = await simpsonsUtils.getSimpsons();
+  const findId = simpsons.find((s) => s.id === id.toString());
+  if(findId) return res.status(409).json({ message: 'id already exists' });
+  simpsons.push({ id, name});
+  await simpsonsUtils.setSimpsons(simpsons);
+  res.status(200).json({ message: 'Novo simpson adicionado com sucesso'});
+}));
 
 // Exercicios 1 ~ 4.
 

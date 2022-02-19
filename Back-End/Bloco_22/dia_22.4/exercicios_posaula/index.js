@@ -1,10 +1,23 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const fs = require('fs');
 
 const app = express();
 app.use(bodyParser.json());
 
 const PORT = 3000;
+
+
+// Exercicios Simpsons
+
+const path = 'simpsons.json'
+app.get('/simpsons', (req, res, next) => {
+  const readFile = fs.readFileSync(path);
+  const simpsons = JSON.parse(readFile);
+  return res.status(200).send(simpsons);
+});
+
+// Exercicios 1 ~ 4.
 
 app.get('/ping', (req, res, next) => {
   return res.status(200).json({ message: 'pong'});
@@ -31,6 +44,8 @@ app.put('/users/:name/:age', (req, res, next) => {
   const { name, age } = req.params;
   return res.status(200).json({ message: `Seu nome é ${name} e você tem ${age} anos de iade`});
 });
+
+
 
 app.listen(PORT, () => {
   console.log('Aplicação ouvindo na porta 3000');

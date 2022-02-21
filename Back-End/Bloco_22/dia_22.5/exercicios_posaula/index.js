@@ -1,15 +1,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const router = require('./routes/router');
+const router = require('./routes/userRouter');
 const postRouter = require('./routes/postRouter');
 const errors = require('./middlewares/routerNotFound');
+const btcRouter = require('./routes/btcRouter');
 
 
 const app = express();
 
 app.use(bodyParser.json());
 
-app.use('/btc', router) 
+app.use('/btc', btcRouter) 
 
 app.use('/user', router);
 

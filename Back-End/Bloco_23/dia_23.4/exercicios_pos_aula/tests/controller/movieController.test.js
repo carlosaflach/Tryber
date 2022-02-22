@@ -93,47 +93,69 @@ describe('Ao chamar o controller de create', () => {
 });
 
 describe('Ao chamar o controller findById', () => {
-  describe('Quando o id não existe', () => {
+  describe('Quando o não existem filmes no banco de dados', () => {
     const response = {};
     const request = {};
     
     before(() => {
-      request.params = {};
-      response.status = sinon.stub()
-        .returns(response);
-      response.send = sinon.stub()
-        .returns();
+      request.params = { id: 1 };
+
+      response.status = sinon.stub().returns(response);
+      response.send = sinon.stub().returns();
+      
+      sinon.stub(MoviesService,'findById').resolves(null);
     });
-    
-    it('É chamado com código 404 - Not Found', async () => {
+
+    after(() => {
+      MoviesService.findById.restore();
+    })
+
+    it('é chamado o método "status" passando 404', async () => {
       await MoviesController.findById(request, response);
 
-      expect(response.status.calledWith(400)).to.be.equal(true);
-      expect(response.calledWith("Filme não encontrado.")).to.be.equal(true);
+      expect(response.status.calledWith(404)).to.be.equal(true);
+    });
+    
+    it('é chamado o método "send" passando a mensagem "Not Found"', async () => {
+      await MoviesController.findById(request, response);
+
+      expect(response.send.calledWith('Not Found')).to.be.equal(true);
     });
   });
 
   describe('Quando o id existe', () => {
+    const movie = {
+      title: 'Example Movie',
+      directedBy: 'Jane Dow',
+      releaseYear: 1999,
+    }
 
     const response = {};
     const request = {};
     
     before(() => {
-      request.params = {};
+      request.params = { id: 1 };
       response.status = sinon.stub()
         .returns(response);
-      response.send = sinon.stub()
-        .returns();
+      response.send = sinon.stub().returns();
+
+      sinon.stub(MoviesService,'findById').resolves(movie);
     });
 
-    it('É chamado com código 200 - OK', () => {
-      await MoviesController.findById(request, response);
-      expect(response.calledWith(200)).to.be.equal(true);
+    after(() => {
+      MoviesService.findById.restore();
     });
 
-    it('Retorna o objeto movies daquele id', () => {
+    it('É chamado com código 200 - OK', async () => {
       await MoviesController.findById(request, response);
-      expect(response).to.be;
+      expect(response.status.calledWith(200)).to.be.equal(true);
     });
+
+    it('é chamado o método "send" passando um objeto', async () => {
+      await MoviesController.findById(request, response);
+
+      expect(response.send.calledWith(sinon.match.object)).to.be.equal(true);
+    });
+
   });
 });

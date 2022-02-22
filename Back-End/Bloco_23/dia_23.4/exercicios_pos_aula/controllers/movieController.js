@@ -30,7 +30,7 @@ const findById = async (req, res) => {
   const { id } = req.params;
   const movie = await MoviesService.findById(id);
 
-  if(!movie) return res.status(400).send("Filme não encontrado.");
+  if(!movie) return res.status(404).send("Not Found");
 
   res.status(200).send(movie);
 };

@@ -4,15 +4,15 @@ const UserModel = require('../models/User');
 
 // Primeiro definimos qual o schema da nossa requisição
 const createUserSchema = Joi.object({
-  firstName: Joi.string().required(),
-  lastName: Joi.string().required(),
-  email: Joi.string().email().required(),
-  password: Joi.string().min(6).required(),
-  }).messages({
-      'any.required': `O campo é obrigatório`,
-      'string.min': 'O campo  deve ter, pelo menos 6 caracteres',
-      'string.email': 'Informe um email válido no campo',
-  });
+    firstName: Joi.string().required(),
+    lastName: Joi.string().required(),
+    email: Joi.string().email().required(),
+    password: Joi.string().min(6).required(),
+}).messages({
+  'any.required': "O campo {{#label}} é obrigatório",
+  'string.min': 'O campo {{#label}} deve ter, pelo menos, {{#limit}} caracteres',
+  'string.email': 'Informe um email válido no campo {{#label}}',
+});
 
   // Depois, exportamos um array de middlewares. O primeiro valida a requisição, o segundo chama o model
   module.exports = [

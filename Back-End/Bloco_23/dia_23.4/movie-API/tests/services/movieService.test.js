@@ -1,14 +1,7 @@
 const { expect } = require('chai');
-
-const MoviesService = {
-  create: () => {},
-};
-
-/*
-  Precisamos validar se estamos recebendo todos os campos
-  necessários para a operação. Como trata-se de uma regra
-  de negócio, validaremos na camada de serviços.
-*/
+const sinon = require('sinon');
+const MoviesModel = require('../../models/movieModel');
+const MoviesService = require('../../services/movieService');
 
 describe('Insere um novo filme no BD', () => {
   describe('quando o payload informado não é válido', () => {
@@ -26,6 +19,16 @@ describe('Insere um novo filme no BD', () => {
       expect(response).to.be.equal(false);
     });
 
+  });
+
+  before(() => {
+    const ID_EXAMPLE = 1;
+    sinon.stub(MoviesModel, 'create').resolves(ID_EXAMPLE);
+  })
+
+  // Restauramos a função create original
+  after(() => {
+    MoviesModel.create.restore();
   });
 
   describe('quando é inserido com sucesso', () => {

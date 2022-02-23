@@ -1,16 +1,23 @@
-const isValidCep = (cep) => {
-  const validate = /\d{5}-\d{3}/;
+const Cep = require('../models/cepModel');
 
-  if(validate.test(cep)) return cep;
+const findAddressByCep = async (searchedCep) => {
+  // Buscamos o CEP através do Model
+  const cep = await Cep.findAddressByCep(searchedCep);
 
-  return cep.replace(/(\d{5})(\d{3})/, '$1-$2');
-}
+  // Caso não encontre nenhum CEP, o service retorna um objeto de erro.
+  if (!cep) {
+    return {
+      error: {
+        code: 'notFound',
+        message: 'CEP não encontrado'
+      },
+    };
+  }
 
-
-const getCep = async () => {
-
+  // Por fim, retornamos o CEP correto
+  return cep;
 };
 
 module.exports = {
-  getCep,
-}
+  findAddressByCep,
+};

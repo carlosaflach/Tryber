@@ -1,21 +1,19 @@
-const cepService = require('../services/cepServices');
+const service = require('../services/cepServices');
+const rescue = require('express-rescue');
 
-const getCep = async (req, res, next) => {
 
-  try {
-    const cep = await  cepService.getCep();
-    const message = {  error: { "code": "invalidData", "message": "CEP inválido" } };
+const findAddressByCep = rescue(async (req, res, next) => {
+  const { cep } = req.params;
 
-  if(!cep) return res.status(400).json(message);
+  const address = await service.findAddressByCep(cep);
 
-  res.status(200).json(cep);
-
-  } catch (e) {
-    next(e);
+  if (address.error) {
+    return next(address.error);
   }
-  
-};
+
+  return res.status(200).json(address);
+});
 
 module.exports = {
-  getCep,
-}
+  findAddressByCep,
+};

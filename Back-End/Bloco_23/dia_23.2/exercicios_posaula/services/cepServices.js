@@ -1,9 +1,9 @@
 const isValidCep = (cep) => {
-  const validate = /^([\d]{2})\.?([\d]{3})\-?([\d]{3})/;
+  const validate = /\d{5}-\d{3}/;
 
-  if(!validate.test(cep)) return false;
+  if(validate.test(cep)) return cep;
 
-  return true;
+  return cep.replace(/(\d{5})(\d{3})/, '$1-$2');
 }
 
 

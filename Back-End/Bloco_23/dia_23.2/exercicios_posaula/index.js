@@ -11,7 +11,7 @@ const app = express();
 app.use(bodyParser.json());
 
 app.get('/ping', ping);
-app.post('/cep', Cep.create);
+app.post('/cep', Cep.create)
 
 app.get('/cep/:cep', Cep.findAddressByCep);
 

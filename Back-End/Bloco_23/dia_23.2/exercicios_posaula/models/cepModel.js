@@ -39,6 +39,17 @@ const findAddressByCep = async (cepToSearch) => {
   return getNewCep(result);
 };
 
+const create = async ({ cep: rawCep, logradouro, bairro, localidade, uf }) => { 
+  const cep = rawCep.replace(/-/ig, '');
+  const query = `INSERT INTO cep_lookup.ceps (cep, logradouro, bairro, localidade, uf)
+    VALUES (?, ?, ?, ?, ?)`;
+  const array = [cep, logradouro, bairro, localidade, uf];
+  await connection.execute(query, array);
+
+  return { cep, logradouro, bairro, localidade, uf };
+}
+
 module.exports = {
   findAddressByCep,
+  create,
 };

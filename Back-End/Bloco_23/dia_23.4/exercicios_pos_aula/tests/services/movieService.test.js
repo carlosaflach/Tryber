@@ -52,3 +52,34 @@ describe('Insere um novo filme no BD', () => {
 
   });
 });
+
+
+describe('Busca um filme pelo id', () => {
+  describe('Quando não existe o filme no banco de dados', () => {
+    it('Retorna null', async () => {
+      const response = await MoviesService.findById();
+
+      expect(response).to.be.equal(null);
+    })
+  });
+
+  describe('Quando existe o filme no banco de dados', () => {
+    it('Retorna um objeto', async () => {
+      const response = await MoviesService.findById(1);
+      
+      expect(response).to.be.an('object');
+    });
+
+    it('O objeto não está vazio', () => {
+      const response = await MoviesService.findById(1);
+
+      expect(response).not.to.be.empty;
+    });
+
+    it('O objeto possui as propriedades: "id", "title", "directedBy", "releaseYear"', () => {
+      const response = await MoviesService.findById(1);
+
+      expect(response).to.include.all.keys('id', 'title', 'directedBy', 'releaseYear');
+    });
+  });
+})

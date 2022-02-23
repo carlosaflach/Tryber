@@ -21,23 +21,17 @@ const create = async ({ title, directedBy, releaseYear }) => {
   };
 };
 
-const isValidId = (id) => {
-  if(!id || typeof id !== 'number' || !Number.isInteger(id)) return false;
-
-  return true;
-}
 
 const findById = async (id) => {
-  const isValid = isValidId(id);
-
-  if(!isValid) return null;
-
-  const {id, title, directed_by, release_year }= await MoviesModel.findById(id);
+  
+  if(!id) return null;
+  
+  const movie = await MoviesModel.findById(id);
   const newMovie = {
-    id,
-    title,
-    directedBy: directed_by,
-    releaseYear: release_year,
+    id: movie.id,
+    title: movie.title,
+    directedBy: movie.directed_by,
+    releaseYear: movie.release_year,
   }
   return newMovie;
 }

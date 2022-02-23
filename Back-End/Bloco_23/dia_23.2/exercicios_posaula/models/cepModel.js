@@ -28,9 +28,12 @@ const findAddressByCep = async (cepToSearch) => {
 
   // Executamos a query, selecionando o primeiro resultado, caso exista
   // e assumindo `null`, caso contrário
-  const [result] = await connection.execute(query, [treatedCep])
+  const result = await connection.execute(query, [treatedCep])
+  .then(([results]) => (results.length ? results[0] : null));
+
+
   
-  if(result.length === 0) return null;
+  // if(result.length !== 0) return result;
   
   // Caso nenhum resultado seja encontrado, retornamos `null`
   if (!result) return null;

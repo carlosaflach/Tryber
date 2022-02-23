@@ -1,3 +1,5 @@
+// middlewares/error.js
+
 module.exports = (err, req, res, _next) => {
   if (err.isJoi) {
     return res.status(400)
@@ -15,7 +17,7 @@ module.exports = (err, req, res, _next) => {
     const status = statusByErrorCode[err.code] || 500;
 
     // Enviamos o status code e o erro como resposta
-    res.status(status).json(err);
+    return res.status(status).json(err);
   }
 
   // Caso não seja um erro de domínio, enviamos uma resposta de erro desconhecido.

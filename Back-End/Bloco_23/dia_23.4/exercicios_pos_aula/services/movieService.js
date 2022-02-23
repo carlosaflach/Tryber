@@ -1,5 +1,6 @@
 const MoviesModel = require('../models/movieModel');
 
+
 const isValid = (title, directedBy, releaseYear) => {
   if (!title || typeof title !== 'string') return false;
   if (!releaseYear || typeof releaseYear !== 'number') return false;
@@ -7,6 +8,13 @@ const isValid = (title, directedBy, releaseYear) => {
 
   return true;
 };
+
+const getAll = async () => {
+  const moviesData = await MoviesModel.getAll();
+
+  return moviesData;
+};
+
 
 const create = async ({ title, directedBy, releaseYear }) => {
   const isMovieValid = isValid(title, directedBy, releaseYear);
@@ -21,22 +29,17 @@ const create = async ({ title, directedBy, releaseYear }) => {
   };
 };
 
-
 const findById = async (id) => {
-  
-  if(!id) return null;
-  
-  const movie = await MoviesModel.findById(id);
-  const newMovie = {
-    id: movie.id,
-    title: movie.title,
-    directedBy: movie.directed_by,
-    releaseYear: movie.release_year,
-  }
-  return newMovie;
-}
+  const movieData = await MoviesModel
+    .getById(id);
+
+  if (!movieData) return null;
+
+  return movieData;
+};
 
 module.exports = {
   create,
   findById,
+  getAll,
 };

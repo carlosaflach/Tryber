@@ -32,6 +32,42 @@ booksRouter.post('/', async (req, res) => {
   }
 });
 
+booksRouter.delete('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const bookToDelete = await Book.findByPk(id);
+    await bookToDelete.destroy();
+
+    res.status(200);
+    res.json(bookToDelete);
+  } catch (e) {
+    console.log(e.message);
+    res.status(500).json({ message: 'Algo deu errado' });
+  }
+});
+
+booksRouter.post('/:id', async (req, res) => {
+  try {
+    const { title, author, pageQuantity = 0 } = req.body;
+    const { id } =  req.params;
+
+    const result = await Book.update(
+      {
+        title,
+        author,
+        pageQuantity,
+      },
+      { where: { id } },
+    );
+
+    res.status(200);
+    res.json(result);
+  } catch (err) {
+    console.log(e.message);
+    res.status(500).json({ message: 'Algo deu errado' });
+  }
+});
+
 booksRouter.get('/:id', async (req, res) => {
   try {
 

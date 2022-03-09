@@ -1,15 +1,11 @@
-const Book = (sequelize, DataTypes) => {
+module.exports = (sequelize, DataTypes) => {
   const Book = sequelize.define('Book', {
-    id: DataTypes.INTEGER,
     title: DataTypes.STRING,
     author: DataTypes.STRING,
     pageQuantity: DataTypes.INTEGER,
     createdAt: DataTypes.DATE,
-  },{
-    underscored: true,
+    updatedAt: DataTypes.DATE // Bônus: Adicione, também, uma data de update nos atributos do livro que se altera sempre que o livro for atualizado.
   });
 
   return Book;
 };
-
-module.exports = Book;

@@ -5,7 +5,7 @@ const { Book } = require('../models');
 
 booksRouter.get('/', async (req, res) => {
   try {
-    const books = await Book.findAll();
+    const books = await Book.findAll({ order: [ ['title', 'ASC'], ['createdAt', 'ASC'] ]}); // Bonus.
 
     if(!books) return res.status(404).json({ message: "Books not found"});
 

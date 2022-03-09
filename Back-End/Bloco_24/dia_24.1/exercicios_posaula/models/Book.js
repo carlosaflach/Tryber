@@ -5,6 +5,8 @@ const Book = (sequelize, DataTypes) => {
     author: DataTypes.STRING,
     pageQuantity: DataTypes.INTEGER,
     createdAt: DataTypes.DATE,
+  },{
+    underscored: true,
   });
 
   return Book;

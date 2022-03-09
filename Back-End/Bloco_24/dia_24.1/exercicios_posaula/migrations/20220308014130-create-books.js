@@ -18,11 +18,13 @@ module.exports = {
         allowNull: false
       },
       pageQuantity: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        field: 'page_quantity'
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        field: 'created_at'
       }
     })
   },

@@ -1,17 +1,7 @@
-const units = ["km³", "hm³", "dam³", "m³", "dm³", "cm³", "mm³"];
+// ./volume.ts
 
-function makeError(unity: string) {
-    throw new Error(`A unidade ${unity} não é uma unidade válida.`)
-}
+import utils from "./utils";
 
-function convert(value: number, forUnity: string, toUnity: string): number {
+const units = ["km", "hm", "dam", "m", "dm", "cm", "mm"];
 
-    if (!units.includes(forUnity)) makeError(forUnity);
-    if (!units.includes(toUnity)) makeError(toUnity);
-
-    const forIndex = units.indexOf(forUnity);
-    const toIndex = units.indexOf(toUnity);
-    const exponent = (toIndex - forIndex);
-
-    return value * Math.pow(10, exponent);
-}
+utils.exec(units); // chamamos diretamente a função exec de utils.ts

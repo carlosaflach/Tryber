@@ -252,7 +252,6 @@ interface Aircraft {
   speedUp: () => void;
   speedDown: () => void;
 }
-*/
 
 // Generics
 // Os Generics são modelos de código que você pode definir e reutilizar em toda a base de código, fornecem uma forma de informar a funções, classes ou interfaces que tipo você deseja usar ao chamá-las, além de nos ajudar a reduzir o uso do tipo any, que não é uma boa prática em TypeScript .
@@ -277,3 +276,23 @@ function identity<T, U> (value: T, message: U) : T {
 let returnNumber = identity<number, string>(100, "Olá");
 let returnString = identity<string, string>("100", "Mundo");
 let returnBoolean = identity<boolean, string>(true, "Olá, Mundo!");
+
+*/
+
+// Genércs com Interfaces
+
+interface ProcessIdentity<T, U> {
+  (value: T, message: U): T;
+}
+
+function processIdentity<T, U> (value: T, message: U) : T {
+  console.log(message);
+  return value
+}
+
+let processor: ProcessIdentity<number, string> = processIdentity;
+let returnNumber = processor(100, "Olá");
+// let returnString = processor("Olá", 100); // Type check error: Argument of type "string" is not assignable to parameter of type "number".
+
+console.log(returnNumber);
+

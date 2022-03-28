@@ -166,3 +166,88 @@ class Flight {
 }
 
 // Interfaces
+// São uma forma eficiente de definir um "contrato de código", ou seja, aquilo que você espera que seja implementado, dentro do seu código.
+//Esta é mais uma estrutura que não existe no JavaScript . A Interface é utilizada para declarar a forma de um objeto, nomear e parametrizar os tipos do objeto e compor tipos de objetos nomeados existentes em novos
+
+interface Employee {
+  firstName: string;
+  lastName: string;
+  fullName(): string;
+}
+
+//Uma interface não inicializa, nem implementa as propriedades declaradas dentro dela, porque o único trabalho de uma interface é descrever o objeto. 
+
+let employee: Employee = {
+  firstName : "John",
+  lastName: "Doe",
+  fullName(): string {
+      return this.firstName + " " + this.lastName; // usamos o "this" para acessar as propriedades da interface
+  }
+}
+
+// employee.firstName = 10;  // Error: Type "number" is not assignable to type "string"
+
+// employee.firstName = 'Carlos'
+console.log(employee);
+console.log(employee.fullName());
+
+// Uma interface também pode estender de uma outra, o que permite que copiemos os membros de uma interface em outra, e proporciona mais flexibilidade na maneira de separará-las em componentes reutilizáveis. Porém, para implementar uma interface que estende outra interface precisamos implementar todas as propriedades necessárias de todas as interfaces.
+
+interface Teacher extends Employee {
+  firstName: string;
+  lastName: string;
+  subject: string;
+  fullName(): string;
+  sayHello(): string;
+}
+
+let teacher: Teacher = {
+  firstName: "John",
+  lastName: "Doe",
+  subject: "Matemática",
+  fullName(): string {
+      return this.firstName + " " + this.lastName;
+  },
+  sayHello(): string {
+      return `Olá, eu sou ${this.fullName()} e leciono ${this.subject}`;
+  }
+}
+
+console.log(teacher);
+console.log(teacher.fullName());
+console.log(teacher.sayHello());
+
+// Exercises
+
+interface Automobile {
+  name: string;
+  maker: string;
+  color: string;
+  doors: number;
+  turnOn: () => void;
+  turnOff: () => void;
+  speedUp: () => void;
+  speedDown: () => void;
+  break: () => void;
+}
+
+interface Feline {
+  name: string;
+  subfamilies: string;
+  walk: () => void;
+  hunt: () => void;
+  eat: () => void;
+  sleep: () => void;
+}
+
+interface Aircraft {
+  model: string;
+  maker: string;
+  wings: number;
+  engines: number;
+  isManned: boolean;
+  turnOn: () => void;
+  turnOff: () => void;
+  speedUp: () => void;
+  speedDown: () => void;
+}

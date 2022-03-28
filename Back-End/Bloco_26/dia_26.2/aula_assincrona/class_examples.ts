@@ -1,3 +1,4 @@
+/*
 // Array
 
 let names: string[] = ['Carlos', 'Emeli', 'Gustavo'];
@@ -251,3 +252,28 @@ interface Aircraft {
   speedUp: () => void;
   speedDown: () => void;
 }
+*/
+
+// Generics
+// Os Generics são modelos de código que você pode definir e reutilizar em toda a base de código, fornecem uma forma de informar a funções, classes ou interfaces que tipo você deseja usar ao chamá-las, além de nos ajudar a reduzir o uso do tipo any, que não é uma boa prática em TypeScript .
+
+function getArray<T>(items : T[]) : T[] {
+  return new Array<T>().concat(items);
+}
+
+let numberArray = getArray<number>([5, 10, 15, 20]);
+numberArray.push(25);
+// numberArray.push("This is not a number"); // Isto vai gerar um erro de compilação
+
+let stringArray = getArray<string>(["Cats", "Dogs", "Birds"]);
+stringArray.push("Rabbits");
+// stringArray.push(30); // Isto vai gerar um erro de compilação
+
+function identity<T, U> (value: T, message: U) : T {
+  console.log(message);
+  return value
+}
+
+let returnNumber = identity<number, string>(100, "Olá");
+let returnString = identity<string, string>("100", "Mundo");
+let returnBoolean = identity<boolean, string>(true, "Olá, Mundo!");

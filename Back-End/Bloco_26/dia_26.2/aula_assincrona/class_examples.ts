@@ -277,7 +277,6 @@ let returnNumber = identity<number, string>(100, "Olá");
 let returnString = identity<string, string>("100", "Mundo");
 let returnBoolean = identity<boolean, string>(true, "Olá, Mundo!");
 
-*/
 
 // Genércs com Interfaces
 
@@ -296,3 +295,22 @@ let returnNumber = processor(100, "Olá");
 
 console.log(returnNumber);
 
+*/
+
+//Genérics com classes.
+
+class ProcessIdentity<T, U> {
+  _value: T;
+  _message: U;
+  constructor(value: T, message: U) {
+      this._value = value;
+      this._message = message;
+  }
+  getIdentity() : T {
+      console.log(this._message);
+      return this._value
+  }
+}
+
+let processor = new ProcessIdentity<number, string>(100, "Olá");
+processor.getIdentity();  // imprime "Olá" e retorna 100

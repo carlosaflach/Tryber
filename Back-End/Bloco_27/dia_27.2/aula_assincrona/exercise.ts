@@ -12,10 +12,13 @@ class Superclass {
 
 class Subclass extends Superclass {
 
+  public sayHello2(): void {
+    this.sayHello();
+  }
 }
 
 // Crie uma função que recebe um objeto da _Superclass_.
-const myFunc = (object: Superclass) => {
+const myFunc = (object: Subclass) => {
   // Dentro da função, chame o método `sayHello` do objeto passado como parâmetro.
   object.sayHello();
 };
@@ -25,5 +28,5 @@ const sup = new Superclass();
 const sub = new Subclass();
 
 // Chame a função 2 vezes, passando os objetos criados.
-myFunc(sup);
+// myFunc(sup);
 myFunc(sub);

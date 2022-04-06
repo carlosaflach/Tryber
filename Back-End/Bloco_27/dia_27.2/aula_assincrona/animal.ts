@@ -16,7 +16,7 @@ class Animal {
 
     constructor(public x: number) { }
   */
-  constructor(public name: string, private birthDate: Date) { }
+  constructor(public name: string, protected birthDate: Date) { }
 
   get age() {
     /*Para operar com datas, vamos operar somente com milisegundos. Uma data
@@ -63,6 +63,9 @@ Tigre está andando!
 class Bird extends Animal {
   fly() {
     console.log(`${this.name} está voando!`);
+  }
+  showBirthDate() {
+    console.log(this.birthDate); // ERRO! birthDate é privado e não é visível pra subclasse Bird.
   }
 }
 

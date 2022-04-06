@@ -37,17 +37,30 @@
 // deve retornar erro
 // fernando.worksGrades = [45, 45, 45];
 
-import Employee from './Employee';
+// import Employee from './Employee';
 
-const testInterfaceEmployee: Employee = {
-    registration: 'FNC1234567891011',
-    salary: 1200.00,
-    admissionDate: new Date(),
-    generateRegistration(): string {
-        const randomStr = String(Date.now() * (Math.random() + 1)).replace(/\W/g, '');
+// const testInterfaceEmployee: Employee = {
+//     registration: 'FNC1234567891011',
+//     salary: 1200.00,
+//     admissionDate: new Date(),
+//     generateRegistration(): string {
+//         const randomStr = String(Date.now() * (Math.random() + 1)).replace(/\W/g, '');
 
-        return `FNC${randomStr}`;
-    }
-}
+//         return `FNC${randomStr}`;
+//     }
+// }
 
-console.log(testInterfaceEmployee);
+// console.log(testInterfaceEmployee);
+
+import Subject from './Subject';
+
+const math = new Subject('Matemática');
+const history = new Subject('História');
+const philosophy = new Subject('Filosofia');
+
+console.log(math);
+console.log(history);
+console.log(philosophy);
+
+// deve retornar erro
+// const invalidSubjectName = new Subject('Po');

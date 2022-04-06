@@ -16,7 +16,7 @@ class Animal {
 
     constructor(public x: number) { }
   */
-  constructor(public name: string, protected birthDate: Date) { }
+  constructor(protected birthDate: Date) { }
 
   get age() {
     /*Para operar com datas, vamos operar somente com milisegundos. Uma data
@@ -33,17 +33,19 @@ class Animal {
 }
 
 class Mammal extends Animal {
+  constructor(public name: string) {
+    super(new Date());
+  }
   walk() {
     console.log(`${this.name} está andando!`);
   }
 }
 
 const tiger = new Mammal(
-  'Tigre',
-  new Date(Date.parse('May 03, 2020')),
+  'tiger'
 );
 
-const monkey = new Mammal('Macaco', new Date(Date.parse('May 01, 2017')));
+const monkey = new Mammal('Monkey');
 
 const showAnimalAge = (animal: Animal) => {
   console.log(animal.age);
@@ -61,6 +63,9 @@ Tigre está andando!
 */
 
 class Bird extends Animal {
+  constructor(public name: string) {
+    super(new Date());
+  }
   fly() {
     console.log(`${this.name} está voando!`);
   }
@@ -71,7 +76,6 @@ class Bird extends Animal {
 
 const parrot = new Bird(
   'Papagaio',
-  new Date(Date.parse('Jun 07, 2017')),
 );
 
 console.log(parrot.age);

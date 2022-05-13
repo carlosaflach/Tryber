@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+FROM node:14-alpine AS build
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+FROM nginx:1.16.0-alpine AS prod
+COPY --from=build /app/build /usr/share/nginx/html
+=======
 # From é a imagem de base, sempre é baseado em outra imagem mesmo que seja uma imagem em branco.
 FROM node:14-alpine AS build
 # workdir é o diretorio de trabalho que especificamos, que será utilizado como base para a execução dos comandos
@@ -17,5 +28,6 @@ FROM nginx:1.16.0-alpine AS prod
 #Copy montar a estrutura do código fonte dentro da imagem, Pode ser encotnrado no site da nginx.
 COPY --from=build /app/build /usr/share/nginx/html
 # porta que será utilizada por nossa aplicação dentro do container. Por padrão, o Nginx usa a porta 80 para executar as aplicações, então, podemos expor esta porta no nosso Dockerfile :
+>>>>>>> 1faa2a17121addcad1c810c37c1837ce7d4d156f
 EXPOSE 80
 ENTRYPOINT ["nginx", "-g", "daemon off;"]

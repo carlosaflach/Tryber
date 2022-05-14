@@ -147,7 +147,7 @@ RUN npm run build
 FROM nginx:1.16.0-alpine AS prod
 COPY --from=build /app/build /usr/share/nginx/html
 ```
-No exemplo acima é utilizado um Dockerfile com multi-stage onde foi copiado para o segundo estágio da imagem, o diretório `/app/build` e disponibilizado no diretório `/usr/share/nginx/html`.
+No exemplo acima é utilizado um Dockerfile com multi-stage onde foi copiado para o segundo estágio da imagem o diretório `/app/build` e disponibilizado no diretório `/usr/share/nginx/html`.
 
 ---
 ### Gerando uma imagem a partir do Dockerfile

@@ -225,6 +225,3 @@ RUN chown -R node-user:node-user /app
 USER node-user
 CMD node index.js
 ```
-
-
-FIm

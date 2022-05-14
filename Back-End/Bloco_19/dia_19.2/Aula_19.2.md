@@ -134,7 +134,7 @@ Nesse caso, a saída no console seria: `Hello John`.
 ---
 ### Multi-Stage Build
 
-Multi-stage build é utilizado para otimizar Dockerfiles enquanto deixa ele mais fácil de ler, e mais fácil de manter. Para evitar ter que manter dois ou mais Dockerfiles, que segundo a documentação não é o ideal, pois torna o processo mais difícil de manutenção. Dessa forma é possível utilizar multiplos `FROM` dentro de um mesmo Dockerfile. Cada `FROM` são usados em instruções de base diferentes, e cada um deles inicia um novo estágio de criação da imagem. Além disso é possível copiar diretórios e arquivos de um estágio para o outro, deixando para trás tudo aquilo que não é esperado para a imagem final.<br>
+Multi-stage build é utilizado para otimizar Dockerfiles enquanto deixam eles mais fácil de ler, e mais fácil de manter. Para evitar ter que manter dois ou mais Dockerfiles, que segundo a documentação não é o ideal, pois torna o processo mais difícil de manutenção. Dessa forma é possível utilizar multiplos `FROM` dentro de um mesmo Dockerfile. Cada `FROM` são usados em instruções de base diferentes, e cada um deles inicia um novo estágio de criação da imagem. Além disso é possível copiar diretórios e arquivos de um estágio para o outro, deixando para trás tudo aquilo que não é esperado para a imagem final.<br>
 Exemplo:
 ```
 FROM node:14-alpine AS build

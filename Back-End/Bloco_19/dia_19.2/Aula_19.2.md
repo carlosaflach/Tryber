@@ -134,7 +134,7 @@ Nesse caso, a saída no console seria: `Hello John`.
 ---
 ### Multi-Stage Build
 
-Multi-stage build é utilizado para otimizar Dockerfiles enquanto deixa ele mais fácil de ler, e mais fácil de manter. Para evitar ter que manter dois ou mais Dockerfiles, que segundo a documentação não é o ideal, pois torna o processo mais difícil de manutenção. Dessa forma é possível utilizar multiplos `FROM` dentro de um mesmo Dockerfile. Cada `FROM` são usados em instruções de base diferentes, e cada um deles inicia um novo estágio de criação da imagem. Além disso é possível copiar diretórios e arquivos de um estágio para o outro, deixando para trás tudo aquilo que não é esperado para a imagem final.<br>
+Multi-stage build é utilizado para otimizar Dockerfiles enquanto deixam eles mais fácil de ler, e mais fácil de manter. Para evitar ter que manter dois ou mais Dockerfiles, que segundo a documentação não é o ideal, pois torna o processo mais difícil de manutenção. Dessa forma é possível utilizar multiplos `FROM` dentro de um mesmo Dockerfile. Cada `FROM` são usados em instruções de base diferentes, e cada um deles inicia um novo estágio de criação da imagem. Além disso é possível copiar diretórios e arquivos de um estágio para o outro, deixando para trás tudo aquilo que não é esperado para a imagem final.<br>
 Exemplo:
 ```
 FROM node:14-alpine AS build
@@ -147,7 +147,7 @@ RUN npm run build
 FROM nginx:1.16.0-alpine AS prod
 COPY --from=build /app/build /usr/share/nginx/html
 ```
-No exemplo acima é utilizado um Dockerfile com multi-stage onde foi copiado para o segundo estágio da imagem, o diretório `/app/build` e disponibilizado no diretório `/usr/share/nginx/html`.
+No exemplo acima é utilizado um Dockerfile com multi-stage onde foi copiado para o segundo estágio da imagem o diretório `/app/build` e disponibilizado no diretório `/usr/share/nginx/html`.
 
 ---
 ### Gerando uma imagem a partir do Dockerfile
@@ -225,6 +225,3 @@ RUN chown -R node-user:node-user /app
 USER node-user
 CMD node index.js
 ```
-
-
-FIm

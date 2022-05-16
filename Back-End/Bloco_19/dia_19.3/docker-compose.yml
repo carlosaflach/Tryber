@@ -2,7 +2,10 @@ version: '3'
 services:
   frontend:
     image: mjgargani/compose-example:frontend-trybe1.0
+    restart: always
   backend:
     image: mjgargani/compose-example:backend-trybe1.0
+    restart: always
   database:
     image: mjgargani/compose-example:database-trybe1.0
+    restart: always

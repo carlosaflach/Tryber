@@ -1,7 +1,0 @@
-USE Escola;
-SELECT DISTINCT Nome, Idade FROM Alunos;
-5;
-SELECT DISTINCT Nome FROM Alunos;
-4;
-SELECT DISTINCT Idade FROM Alunos;
-4;

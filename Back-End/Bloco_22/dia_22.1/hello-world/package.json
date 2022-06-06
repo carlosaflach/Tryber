@@ -13,5 +13,8 @@
     "Node.js"
   ],
   "author": "Carlos A. Flach",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
 }

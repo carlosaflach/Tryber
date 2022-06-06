@@ -1,0 +1,17 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "First hello world with node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "Hello",
+    "World",
+    "Node.js"
+  ],
+  "author": "Carlos A. Flach",
+  "license": "ISC"
+}

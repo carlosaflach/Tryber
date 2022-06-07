@@ -1,5 +1,8 @@
-const imc = (heigth, weight) => {
-  return console.log((weight/(heigth * heigth)).toFixed(2));
-}
+const readline = require('readline-sync');
 
-imc(1.73, 82.9);
+const weight = readline.questionFloat('Qual é o seu peso? ');
+const heigth = readline.questionFloat('Qual é sua altura? ');
+const imc = (weight/(heigth * heigth)).toFixed(2);
+
+console.log(imc);
+

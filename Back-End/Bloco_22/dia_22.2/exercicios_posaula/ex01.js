@@ -7,10 +7,20 @@ const ex1func = (a, b, c) => {
 
     if(resultado < 50) reject(new Error('Valor muito baixo'));
 
-    resolve(console.log(resultado));
+    resolve(resultado);
   });
 
   return promise;
 }
 
-ex1func(1, 10, 5);
+ex1func(10, 10, 10)
+  .then((resolve) => console.log(resolve))
+  .catch((error) => console.log(error.message));
+
+ex1func(1, 1, 'a')
+  .then((resolve) => console.log(resolve))
+  .catch((error) => console.log(error.message));
+
+ex1func(1, 1, 1)
+  .then((resolve) => console.log(resolve))
+  .catch((error) => console.log(error.message));

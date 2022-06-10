@@ -1,7 +1,5 @@
 const readline = require('readline-sync');
 
-
-
 const main = () => {
   const heigth = readline.questionFloat('Qual é sua altura? ');
   const weight = readline.questionFloat('Qual é o seu peso? ');
@@ -39,3 +37,5 @@ console.log('Situação: Obesidade graus III e IV');
 }
 
 main();
+
+module.exports = main;

@@ -1,0 +1,19 @@
+{
+  "name": "imc",
+  "version": "1.0.0",
+  "description": "calcula imc",
+  "main": "imc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "imc": "node imc.js"
+  },
+  "keywords": [
+    "calculo",
+    "imc"
+  ],
+  "author": "carlos a. flach",
+  "license": "ISC",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}

@@ -23,4 +23,10 @@ describe('Testa função que checka se o número é positivo, neutro ou negativo
       });
     });
     
+    describe('Quando não é um número', () => {
+      it('Deve gerar um erro', () => {
+          // const number = checkNumber('casa');
+          expect(() => checkNumber('casa')).to.throw()
+      });
+    })
 });

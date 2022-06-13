@@ -60,6 +60,12 @@ app.get('/recipes/search', function (req, res) {
   res.status(200).json(filteredRecipes);
 });
 
+app.get('/drinks/search', (req, res) => {
+  const { name } = req.query;
+  const filteredDrinks = drinks.filter((d) => d.name.includes(name));
+  res.status(200).json(filteredDrinks);
+});
+
 app.get('/recipes/:id', function (req, res) {
   const { id } = req.params;
   const recipe = recipes.find((r) => r.id === Number(id));

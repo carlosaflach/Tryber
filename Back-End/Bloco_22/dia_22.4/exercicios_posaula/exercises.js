@@ -37,7 +37,7 @@ app.put('/users/:name/:age', (req, res) => {
 })
 
 // Ex05
-
+// a)
 app.get('/simpsons', async (req, res) => {
    try {
      const simpsons = await simpsonsUtils.getSimpsons();
@@ -47,5 +47,23 @@ app.get('/simpsons', async (req, res) => {
      return res.status(500).end();
    }
 });
+
+// b)
+
+app.get('/simpsons/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const simpsons = await simpsonsUtils.getSimpsons();
+    const simpsonIndex = simpsons.findIndex((s) => s.id === id);
+
+    if(simpsonIndex < 0) return res.status(404).json({ message: 'simpson not found' });
+
+    return res.status(202).json(simpsons[simpsonIndex]);
+
+  } catch (error) {
+    return res.status(500).end();
+  }
+});
+
 
 app.listen(3000, () => console.log('ouvindo na porta 3000!'));

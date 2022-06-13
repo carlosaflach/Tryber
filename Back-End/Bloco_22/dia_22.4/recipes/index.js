@@ -55,8 +55,8 @@ app.get('/drinksbyname', (req, res) => {
 })
 
 app.get('/recipes/search', function (req, res) {
-  const { name } = req.query;
-  const filteredRecipes = recipes.filter((r) => r.name.includes(name));
+  const { name, maxPrice } = req.query;
+  const filteredRecipes = recipes.filter((r) => r.name.includes(name) && r.price <= Number(maxPrice));
   res.status(200).json(filteredRecipes);
 });
 

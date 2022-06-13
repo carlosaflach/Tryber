@@ -1,6 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
+const simpsonsUtils = require('./fs-utils');
+
+
 const app = express();
 
 app.use(bodyParser.json());
@@ -32,5 +35,17 @@ app.put('/users/:name/:age', (req, res) => {
 
   res.status(200).json({ message: `Seu nome é ${name} e você tem ${age} anos de idade.`});
 })
+
+// Ex05
+
+app.get('/simpsons', async (req, res) => {
+   try {
+     const simpsons = await simpsonsUtils.getSimpsons();
+
+     return res.status(200).json(simpsons);
+   } catch (error) {
+     return res.status(500).end();
+   }
+});
 
 app.listen(3000, () => console.log('ouvindo na porta 3000!'));

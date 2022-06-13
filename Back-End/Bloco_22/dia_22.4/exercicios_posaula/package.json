@@ -2,10 +2,10 @@
   "name": "exercicios_posaula",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "exercicios_posaula/exercises.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon ex01.js"
+    "dev": "nodemon exercises.js"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +14,7 @@
     "nodemon": "^2.0.16"
   },
   "dependencies": {
+    "body-parser": "^1.20.0",
     "express": "^4.18.1"
   }
 }

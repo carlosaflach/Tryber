@@ -48,6 +48,28 @@ app.get('/simpsons', async (req, res) => {
    }
 });
 
+// c
+app.post('/simpsons', async (req, res) => {
+  try {
+    const { id, name } = req.body;
+
+    const simpsons = await simpsonsUtils.getSimpsons();
+
+    if (simpsons.some((character) => character.id === id)) {
+      // não esqueça de adicionar o return para impedir de que seu código continue.
+      return res.status(409).json({ message: 'id already exists' });
+    }
+
+    simpsons.push({ id, name });
+
+    await simpsonsUtils.setSimpsons(simpsons);
+
+    return res.status(204).end();
+  } catch (error) {
+    return res.status(500).end();
+  }
+});
+
 // b)
 
 app.get('/simpsons/:id', async (req, res) => {

@@ -6,7 +6,12 @@ const getSimpsons = async () => {
   return simpsonsJson;
 };
 
+function setSimpsons(newSimpsons) {
+  return fs.writeFile('./simpsons.json', JSON.stringify(newSimpsons));
+}
+
 
 module.exports = {
-  getSimpsons
+  getSimpsons,
+  setSimpsons
 };

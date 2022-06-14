@@ -35,13 +35,21 @@ function validateName(req, res, next) {
   next();
 };
 
-app.post('/recipes', validateName, function (req, res) {
+function validadePrice(req, res, next) {
+  const { price } = req.body;
+
+  if(!price || price < 0) return res.status(400).json({ message: 'Invalid price!'});
+
+  next();
+}
+
+app.post('/recipes', validateName, validadePrice, function (req, res) {
   const { id, name, price } = req.body;
   recipes.push({ id, name, price});
   res.status(201).json({ message: 'Recipe created successfully!'});
 });
 
-app.put('/recipes/:id', validateName, function (req, res) {
+app.put('/recipes/:id', validateName, validadePrice, function (req, res) {
   const { id } = req.params;
   const { name, price } = req.body;
   const recipesIndex = recipes.findIndex((r) => r.id === Number(id));

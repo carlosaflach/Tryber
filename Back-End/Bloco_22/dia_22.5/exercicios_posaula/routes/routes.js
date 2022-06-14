@@ -1,10 +1,12 @@
 const express = require('express');
+const { validateName, validateInfos } = require('../middlewares/validations');
 
 const router = express.Router();
 
-router.post('/', (req, res) => {
+router.post('/', validateName, validateInfos, (req, res) => {
   const { producName, infos } = req.body;
-  
+
+  res.status(201).json({ message: "Venda cadastrada com sucesso."});
 });
 
 

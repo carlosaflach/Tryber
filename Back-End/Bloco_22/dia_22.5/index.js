@@ -54,7 +54,8 @@ function validadePrice(req, res, next) {
 
 app.post('/recipes', validateName, validadePrice, function (req, res) {
   const { id, name, price } = req.body;
-  recipes.push({ id, name, price});
+  const { username } = req.user; // Aqui estamos acessando o usuário encontrado no middleware de autenticação.
+  recipes.push({ id, name, price, chef: username });
   res.status(201).json({ message: 'Recipe created successfully!'});
 });
 

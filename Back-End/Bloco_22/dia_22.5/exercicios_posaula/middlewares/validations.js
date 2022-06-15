@@ -80,6 +80,7 @@ const validateInfos = (req, res, next) => {
   }
 }
 
+
 module.exports =  {
   validateName,
   validateInfos,

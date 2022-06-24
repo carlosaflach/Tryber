@@ -14,7 +14,11 @@ app.get('/authors', async (_req, res) => {
 });
 
 app.get('/books', async (req, res) => {
-  const books = await Book.getAllBooks();
+  const { author_id } = req.query;
+
+  const books = (author_id)
+  ? await Book.getByAuthorId(author_id)
+  : await Book.getAllBooks();
 
   res.status(200).json(books);
 })

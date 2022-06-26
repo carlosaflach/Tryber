@@ -5,17 +5,19 @@ const Author = require('../models/Author');
 
 const getAll = async () => Author.getAll();
 
-const findById = async (req, res, next) => {
-  const { id } = req.params;
-
+const findById = async (id) => {
   const author = await Author.findById(id);
 
-  // Caso o service retorne um erro, interrompemos o processamento
-  // e inicializamos o fluxo de erro
-  if (author.error) return next(author.error);
+  if (!author) {
+    return {
+      error: {
+        code: 'notFound',
+        message: `Não foi possível encontrar uma pessoa autora com o id ${id}`,
+      },
+    };
+  }
 
-  // Caso não haja nenhum erro, retornamos o author encontrado
-  return res.status(200).json(author);
+  return author;
 };
 
 const createAuthor = async (firstName, middleName, lastName) => {

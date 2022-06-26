@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 const rescue = require('express-rescue');
 
-const Author = require('./controllers/Authors');
+const Author = require('./controllers/Author');
 const errorMiddleware = require('./middlewares/error');
 
 const app = express();

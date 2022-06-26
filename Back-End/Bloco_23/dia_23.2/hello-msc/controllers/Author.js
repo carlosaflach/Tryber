@@ -1,5 +1,7 @@
 // controllers/Authors.js
 
+const Joi = require('joi');
+
 const Author = require('../services/Authors');
 
 const getAll = async (_req, res) => {
@@ -8,24 +10,48 @@ const getAll = async (_req, res) => {
   res.status(200).json(authors);
 };
 
-const findById = async (req, res) => {
+const findById = async (req, res, next) => {
   const { id } = req.params;
 
   const author = await Author.findById(id);
 
-  if (!author) return res.status(404).json({ message: 'Author not found' });
+  // Caso o service retorne um erro, interrompemos o processamento
+  // e inicializamos o fluxo de erro
+  if (author.error) return next(author.error);
 
-  res.status(200).json(author);
+  // Caso não haja nenhum erro, retornamos o author encontrado
+  return res.status(200).json(author);
 };
 
-const createAuthor = async (req, res) => {
-  const { first_name, middle_name, last_name } = req.body;
+const createAuthor = async (req, res, next) => {
+  const {
+    first_name: firstName,
+    middle_name: middleName,
+    last_name: lastName,
+  } = req.body;
 
-  const author = await Author.createAuthor(first_name, middle_name, last_name);
+  // Utilizamos o Joi para descrever o objeto que esperamos
+  // receber na requisição. Para isso, chamamos Joi.object()
+  // passando um objeto com os campos da requisição e suas descrições
+  const { error } = Joi.object({
+    firstName: Joi.string().not().empty().required(),
+    lastName: Joi.string().not().empty().required(),
+  }).validate({ firstName, lastName }); // Por fim, pedimos que o Joi verifique se o corpo da requisição se adequa a essas regras
 
-  if (!author) return res.status(400).json({ message: 'Dados inválidos' });
+  // Caso exista algum problema com a validação, iniciamos o fluxo de erro e interrompemos o middleware.
+  if (error) {
+    return next(error);
+  }
 
-  res.status(201).json(author);
+  // Caso não haja erro de validação, prosseguimos com a criação da pessoa autora
+  const newAuthor = await Author.createAuthor(firstName, middleName, lastName);
+
+  // Caso haja erro na criação da pessoa autora, iniciamos o fluxo de erro
+  if (newAuthor.error) return next(newAuthor.error);
+
+  // Caso esteja tudo certo, retornamos o status 201 Created, junto com as informações
+  // da nova pessoa autora
+  return res.status(201).json(newAuthor);
 };
 
 module.exports = {

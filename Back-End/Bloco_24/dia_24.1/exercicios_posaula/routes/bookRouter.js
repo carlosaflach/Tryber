@@ -4,5 +4,6 @@ const BooksController = require('../controllers/bookController'); // importamos 
 const bookRouter = express.Router();
 
 bookRouter.get('/', BooksController.getAll);
+bookRouter.get('/:id', BooksController.findById);
 
 module.exports = bookRouter;

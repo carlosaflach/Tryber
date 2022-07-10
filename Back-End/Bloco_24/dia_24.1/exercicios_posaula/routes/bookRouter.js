@@ -5,5 +5,6 @@ const bookRouter = express.Router();
 
 bookRouter.get('/', BooksController.getAll);
 bookRouter.get('/:id', BooksController.findById);
+bookRouter.post('/', BooksController.create);
 
 module.exports = bookRouter;

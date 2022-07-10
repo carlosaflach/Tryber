@@ -25,7 +25,21 @@ const findById = async (req, res) => {
   }
 };
 
+const create = async (req, res) => {
+  try {
+    const { title, author, pageQuantity } = req.body;
+    const newBook = await BookService.create(title, author, pageQuantity);
+
+    return res.status(201).json(newBook);
+  
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({message: 'Something goes wrong!!'});
+  }
+};
+
 module.exports = {
   getAll,
-  findById
+  findById,
+  create
 };

@@ -34,8 +34,8 @@ const findById = async (req, res) => {
 
 const create = async (req, res) => {
   try {
-    const { title, author, pageQuantity } = req.body;
-    const newBook = await BookService.create(title, author, pageQuantity);
+    const { title, author, pageQuantity, publisher } = req.body;
+    const newBook = await BookService.create(title, author, pageQuantity, publisher);
 
     return res.status(201).json(newBook);
   } catch (error) {
@@ -47,12 +47,13 @@ const create = async (req, res) => {
 const editBook = async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, author, pageQuantity } = req.body;
+    const { title, author, pageQuantity, publisher } = req.body;
     const editedBook = await BookService.editBook(
       Number(id),
       title,
       author,
-      pageQuantity
+      pageQuantity,
+      publisher
     );
 
     if (!editedBook) return res.staus(404).json({ message: "Book not found" });

@@ -2,6 +2,7 @@
 
 const Book = (sequelize, DataTypes) => {
   const Book = sequelize.define('Book', {
+    id: DataTypes.INTEGER,
     title: DataTypes.STRING,
     author: DataTypes.STRING,
     pageQuantity: DataTypes.INTEGER,
@@ -12,7 +13,7 @@ const Book = (sequelize, DataTypes) => {
     uderscored: true,
     tableName: 'Books',
   });
-  
+
   return Book;
 };
 

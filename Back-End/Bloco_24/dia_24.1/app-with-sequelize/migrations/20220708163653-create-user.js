@@ -9,7 +9,8 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       fullName: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        field: 'full_name',
       },
       // adicionamos um novo campo 'email' como foi feito no model !
       email: {
@@ -17,11 +18,13 @@ module.exports = {
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        field: 'created_at',
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        field: 'updated_at',
       }
     });
   },

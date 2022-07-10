@@ -38,6 +38,21 @@ const create = async (req, res) => {
   }
 };
 
+const editBook = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title, author, pageQuantity } = req.body;
+    const editedBook = await BookService.editBook(Number(id), title, author, pageQuantity);
+
+    if(!editedBook) return res.staus(404).json({ message: 'Book not found' });
+
+    return res.status(200).json({ message: 'Book Updated!' });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({message: 'Something goes wrong!!'});
+  }
+};
+
 const deleteBook = async (req, res) => {
   try {
     const { id } = req.params;
@@ -55,5 +70,6 @@ module.exports = {
   getAll,
   findById,
   create,
-  deleteBook
+  deleteBook,
+  editBook
 };

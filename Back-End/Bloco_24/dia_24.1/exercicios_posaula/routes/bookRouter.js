@@ -7,5 +7,6 @@ bookRouter.get('/', BooksController.getAll);
 bookRouter.get('/:id', BooksController.findById);
 bookRouter.post('/', BooksController.create);
 bookRouter.delete('/:id', BooksController.deleteBook);
+bookRouter.put('/:id', BooksController.editBook);
 
 module.exports = bookRouter;

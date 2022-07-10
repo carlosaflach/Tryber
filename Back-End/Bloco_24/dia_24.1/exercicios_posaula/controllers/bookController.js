@@ -38,8 +38,22 @@ const create = async (req, res) => {
   }
 };
 
+const deleteBook = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const isDeleted = await BookService.deleteBook(Number(id));
+    if(!isDeleted) return res.staus(404).json({ message: 'Book not found' });
+
+    return res.status(200).json({ message: "Succeed in delete this book"});
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({message: 'Something goes wrong!!'});
+  }
+};
+
 module.exports = {
   getAll,
   findById,
-  create
+  create,
+  deleteBook
 };

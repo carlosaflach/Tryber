@@ -1,7 +1,7 @@
 const { Book } = require('../models');
 
 const getAll = async () => {
-  const books = await Book.findAll(); // Função do Sequelize que busca todos.
+  const books = await Book.findAll({ order: [['title', 'ASC']], }); // Função do Sequelize que busca todos.
   return books;
 };
 
@@ -29,10 +29,16 @@ const deleteBook = async (id) => {
   return deleteBook;
 };
 
+const getByAuthor = async (author) => {
+  const books = await Book.findAll({ where: { author }, order: [['title', 'ASC']], });
+  return books;
+};
+
 module.exports = {
   getAll,
   findById,
   create,
   deleteBook,
-  editBook
+  editBook,
+  getByAuthor,
 };

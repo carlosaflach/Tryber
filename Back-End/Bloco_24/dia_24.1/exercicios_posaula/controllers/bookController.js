@@ -1,13 +1,20 @@
-const BookService = require('../services/bookService');
+const BookService = require("../services/bookService");
 
 const getAll = async (req, res) => {
   try {
-    const books = await BookService.getAll();
+    const { author } = req.query;
+    let books;
+
+    if (author) {
+      books = await BookService.getByAuthor(author);
+    } else {
+      books = await BookService.getAll();
+    }
+
     res.status(200).json(books);
-    
   } catch (error) {
     console.log(error);
-    res.status(500).json({message: 'Something goes wrong!!'});
+    res.status(500).json({ message: "Something goes wrong!!" });
   }
 };
 
@@ -16,12 +23,12 @@ const findById = async (req, res) => {
     const { id } = req.params;
     const book = await BookService.findById(Number(id));
 
-    if(!book) return res.staus(404).json({ message: 'Book not found' });
+    if (!book) return res.staus(404).json({ message: "Book not found" });
 
     return res.status(200).json(book);
   } catch (error) {
     console.log(error);
-    res.status(500).json({message: 'Something goes wrong!!'});
+    res.status(500).json({ message: "Something goes wrong!!" });
   }
 };
 
@@ -31,10 +38,9 @@ const create = async (req, res) => {
     const newBook = await BookService.create(title, author, pageQuantity);
 
     return res.status(201).json(newBook);
-  
   } catch (error) {
     console.log(error);
-    res.status(500).json({message: 'Something goes wrong!!'});
+    res.status(500).json({ message: "Something goes wrong!!" });
   }
 };
 
@@ -42,14 +48,19 @@ const editBook = async (req, res) => {
   try {
     const { id } = req.params;
     const { title, author, pageQuantity } = req.body;
-    const editedBook = await BookService.editBook(Number(id), title, author, pageQuantity);
+    const editedBook = await BookService.editBook(
+      Number(id),
+      title,
+      author,
+      pageQuantity
+    );
 
-    if(!editedBook) return res.staus(404).json({ message: 'Book not found' });
+    if (!editedBook) return res.staus(404).json({ message: "Book not found" });
 
-    return res.status(200).json({ message: 'Book Updated!' });
+    return res.status(200).json({ message: "Book Updated!" });
   } catch (error) {
     console.log(error);
-    res.status(500).json({message: 'Something goes wrong!!'});
+    res.status(500).json({ message: "Something goes wrong!!" });
   }
 };
 
@@ -57,12 +68,12 @@ const deleteBook = async (req, res) => {
   try {
     const { id } = req.params;
     const isDeleted = await BookService.deleteBook(Number(id));
-    if(!isDeleted) return res.staus(404).json({ message: 'Book not found' });
+    if (!isDeleted) return res.staus(404).json({ message: "Book not found" });
 
-    return res.status(200).json({ message: "Succeed in delete this book"});
+    return res.status(200).json({ message: "Succeed in delete this book" });
   } catch (error) {
     console.log(error);
-    res.status(500).json({message: 'Something goes wrong!!'});
+    res.status(500).json({ message: "Something goes wrong!!" });
   }
 };
 
@@ -71,5 +82,5 @@ module.exports = {
   findById,
   create,
   deleteBook,
-  editBook
+  editBook,
 };

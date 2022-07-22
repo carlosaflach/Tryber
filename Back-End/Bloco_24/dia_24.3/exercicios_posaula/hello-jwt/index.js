@@ -31,7 +31,7 @@ app.get(
   /* Middleware que verifica se a pessoa autenticada é admin */
   middlewares.admin,
   /* Controller do endpoint */
-  controllers.topSecret
+  controllers.topSecret,
 );
 
 app.use(middlewares.error);

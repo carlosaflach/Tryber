@@ -65,6 +65,10 @@ Tigre está andando!
 
 
 class Bird extends Animal {
+  constructor(public name: string) {
+    super(name, new Date())
+  }
+
   fly() {
     console.log(`${this.name} está voando!`);
   }
@@ -74,10 +78,7 @@ class Bird extends Animal {
   }
 }
 
-const parrot = new Bird(
-  'Papagaio',
-  new Date(Date.parse('Jun 07, 2017')),
-);
+const parrot = new Bird('Papagaio');
 
 console.log(parrot.age);
 parrot.fly();

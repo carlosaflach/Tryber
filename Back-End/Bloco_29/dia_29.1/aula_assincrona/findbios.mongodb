@@ -1,0 +1,31 @@
+// Ex 1:
+use('bios')
+db.bios.find()
+
+// Ex 2:
+use('bios')
+db.bios.find( {_id: 5} )
+
+// Ex: 3
+use('bios')
+db.bios.find( { "name.last": "Hopper" } )
+
+// Ex: 4
+use('bios');
+db.bios.find({}, { name: 1 });
+
+// Ex: 5
+use('bios');
+db.bios.find().limit(5);
+
+// Comando usado no shell para deixar uma identação mais bonita
+db.bios.find().limit(5).pretty()
+
+// Ex: 6
+
+use('bios');
+db.bios.find().skip(2);
+
+// Ex: 7
+use('bios');
+db.bios.find().limit(10).skip(5)

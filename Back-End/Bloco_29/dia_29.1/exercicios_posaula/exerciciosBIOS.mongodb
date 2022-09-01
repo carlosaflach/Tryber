@@ -1,0 +1,23 @@
+// Exercicio 01
+use('bios');
+db.bios.find({ _id: 8});
+
+// Ex 02:
+use('bios');
+db.bios.find({_id: 8}, { name: 1});
+
+// Ex 03:
+use('bios');
+db.bios.findOne({ _id: 8}, { name: 1, birth: 1, _id: 0});
+
+// Ex 04:
+use('bios');
+db.bios.find({ "name.first": 'John'}).pretty();
+
+// Ex 05:
+use('bios');
+db.bios.find().limit(3).pretty();
+
+// Ex 06:
+use('bios');
+db.bios.find().limit(2).skip(5);

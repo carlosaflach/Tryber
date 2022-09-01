@@ -1,0 +1,43 @@
+use('films')
+db.movies.insertOne(
+    {
+        "title" : "Forrest Gump",
+        "category" : [ "drama", "romance" ],
+        "imdb_rating" : 8.8,
+        "filming_locations" : [
+            { "city" : "Savannah", "state" : "GA", "country" : "USA" },
+            { "city" : "Monument Valley", "state" : "UT", "country" : "USA" },
+            { "city" : "Los Anegeles", "state" : "CA", "country" : "USA" }
+        ],
+        "box_office" : {
+            "gross" : 557, "opening_weekend" : 24, "budget" : 55
+        }
+    }
+)
+
+//1
+
+// Método find() aceita dois parametros
+// o primeiro é query
+// o segundo é a projection => a projection adiciona, os parametros que serao retornados do documento.
+// Projection deve ser sempre 1 para true, e 0 para false.
+// è possivel não passar nenhum parametro, ai ele retornara todos os documentos daquela collection
+use('films')
+db.movies.findOne(
+    { "title" : "Forrest Gump" },
+    { "title" : 1, "imdb_rating" : 1}
+)
+
+use('films')
+db.movies.findOne();
+
+// Removendo o _id que por padrão sempre retorna.
+use('films')
+db.movies.findOne(
+    { "title" : "Forrest Gump" },
+    { "title" : 1, "imdb_rating" : 1, "_id": 0 }
+)
+
+use('films')
+db.movies.countDocuments({})
+

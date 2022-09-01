@@ -1,0 +1,16 @@
+// Ex 07:
+use('books');
+db.books.countDocuments({});
+
+// Ex 08:
+use('books');
+db.books.countDocuments({ "status": "PUBLISH"});
+
+// Ex 09:
+use('books');
+db.books.find({}, { title: 1, isbn: 1, pageCount: 1, _id: 0}).limit(3);
+
+// Ex 10:
+
+use('books');
+db.books.find({ status: "MEAP"}, { title: 1, authors: 1, status: 1}).limit(10).skip(5);

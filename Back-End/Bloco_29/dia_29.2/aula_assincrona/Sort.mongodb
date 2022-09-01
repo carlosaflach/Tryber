@@ -1,0 +1,7 @@
+// Ex 01:
+use('business');
+db.restaurants.find().sort({ name: 1});
+
+// Ex 02:
+use('business');
+db.restaurants.find().sort({ rating: -1});

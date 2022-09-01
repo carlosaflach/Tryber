@@ -1,0 +1,26 @@
+use('business');
+db.restaurants.countDocuments({});
+
+// Exercicios de fixação:
+// Ex 01:
+use('business');
+db.restaurants.countDocuments({ borough: { $in: ["Queens", "Staten Island", "Bronx"] } });
+db.restaurants.find({ borough: { $in: ['Queens', 'Staten Island',' Bronx']}}).count();
+
+// Ex 02:
+
+use('business');
+
+db.restaurants.find({ cuisine: { $ne: 'American' }}).count();
+
+// Ex 03:
+use('business');
+db.restaurants.find({ rating: { $gte: 8 }}).count();
+
+// Ex 04:
+use('business');
+db.restaurants.find({ rating: { $lt: 4 }}).count();
+
+// Ex 05:
+use('business');
+db.restaurants.find({ rating: { $nin: [5, 6, 7] } }).count();

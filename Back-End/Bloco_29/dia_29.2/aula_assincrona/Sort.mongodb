@@ -1,7 +1,9 @@
-// Ex 01:
+// Ex 01: Ordene alfabeticamente os restaurantes pelo nome (atributo name).
+
 use('business');
 db.restaurants.find().sort({ name: 1});
 
-// Ex 02:
+// Ex 02: Ordene os restaurantes de forma decrescente baseado nas avaliações.
+
 use('business');
 db.restaurants.find().sort({ rating: -1});

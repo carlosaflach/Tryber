@@ -1,0 +1,18 @@
+use('conteudo_trybe');
+db.fruits.insertOne(
+  { _id: 100, name: "Banana", quantity: 100, inStock: true }
+);
+
+use('conteudo_trybe');
+db.fruits.find({});
+
+//A operação a seguir altera o nome do campo name para productName no documento em que o valor do campo name seja igual a Banana:
+
+use('conteudo_trybe');
+db.fruits.updateOne(
+  { _id: 100},
+  { $rename: {
+      "name": "productName" 
+    }
+  }
+);

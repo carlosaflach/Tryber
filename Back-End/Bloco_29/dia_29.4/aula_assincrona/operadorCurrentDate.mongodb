@@ -1,0 +1,22 @@
+use('conteudo_trybe');
+db.customers.insertOne(
+  { _id: 1, status: "a", lastModified: ISODate("2013-10-02T01:11:18.965Z") }
+);
+
+use('conteudo_trybe');
+db.customers.find({})
+
+//Com a operação abaixo, é possível alterar o valor do campo lastModified para a data corrente e criar o campo cancellation.date com o timestamp corrente, utilizando o operador $currentDate, e ainda alterar o campo status para D e criar o campo cancellation.reason com o valor "user request", utilizando o operador $set:
+
+use('conteudo_trybe');
+db.customers.updateOne(
+  { _id: 1 },
+  { $currentDate: {
+      lastModified: true,
+      "cancellation.date": { $type: "timestamp" }
+    }, $set: {
+      "cancellation.reason": "user request",
+      status: "D"
+    }
+  }
+);

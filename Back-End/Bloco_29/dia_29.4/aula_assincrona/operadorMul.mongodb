@@ -1,0 +1,43 @@
+use('conteudo_trybe');
+db.products.find({});
+
+use('conteudo_trybe');
+db.products.insertOne(
+  { "_id": 1, "item": "ABC", "price": NumberDecimal("10.99"), "qty": 25 }
+);
+
+// Usando o operador $mul para multiplicar campos
+use('conteudo_trybe');
+db.products.updateOne(
+  { _id: 1 },
+  { $mul: { price: NumberDecimal("1.25"), qty: 2 } }
+);
+
+use('conteudo_trybe');
+db.products.insertOne(
+  { _id: 2, item: "Unknown" }
+);
+
+// Usando operador $mul em um campo que não existe no documento
+use('conteudo_trybe');
+db.products.updateOne(
+  { _id: 2 },
+  { $mul: { price: NumberLong("100") } }
+);
+
+//R ele criou o campo e inseriou o valor como 0.
+
+
+use('conteudo_trybe');
+db.products.insertOne(
+  { _id: 3,  item: "XYZ", price: NumberLong("10") }
+);
+
+
+// A query abaixo faz um update, multiplicando o valor do campo price, que é do tipo NumberLong("10"), por NumberInt(5):
+
+use('conteudo_trybe')
+db.products.update(
+  { _id: 3 },
+  { $mul: { price: NumberInt(5) } }
+);

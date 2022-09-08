@@ -1,0 +1,133 @@
+// Ex01: Inspecione um documento para que você se familiarize com a estrutura. Entenda os atributos e os níveis existentes.
+
+use('class');
+db.superheroes.find().sort({name: 1});
+
+// Ex02: Selecione todos os super-heróis com menos de 1.80m de altura. Lembre-se de que essa informação está em centímetros.
+
+use('class');
+db.superheroes.find({ 'aspects.height': {$lt: 180 }})
+
+// Ex03: Retorne o total de super-heróis menores que 1.80m.
+
+use('class');
+db.superheroes.find({ 'aspects.height': {$lt: 180 }}).count();
+
+// Ex 04: Retorne o total de super-heróis com até 1.80m.
+
+use('class');
+db.superheroes.find({ 'aspects.height': {$lte: 180 }}).count();
+
+// Ex 05: Selecione um super-herói com 2.00m ou mais de altura.
+
+use('class');
+db.superheroes.findOne({ 'aspects.height': {$gte: 200}}, {'aspects.height': 1})
+
+// Exercício 6: Retorne o total de super-heróis com 2.00m ou mais.
+
+use('class');
+db.superheroes.countDocuments({ 'aspects.height': {$gte: 200}})
+
+//OU
+use('class');
+db.superheroes.find({ 'aspects.height': { $gte: 200}}).count();
+
+// Exercício 7: Selecione todos os super-heróis que têm olhos verdes.
+
+use('class');
+db.superheroes.find({ 'aspects.eyeColor': { $eq: 'green'}});
+
+// Exercício 8: Retorne o total de super-heróis com olhos azuis.
+
+use('class');
+db.superheroes.find({ 'aspects.eyeColor': 'blue'}).count();
+
+// Exercício 9: Utilizando o operador $in, selecione todos os super-heróis com cabelos pretos ou carecas ("No Hair").
+
+use('class');
+db.superheroes.find({ "aspects.hairColor": { $in: ["black", "No Hair"] } })
+
+// Exercício 10: Retorne o total de super-heróis com cabelos pretos ou carecas ("No Hair").
+
+use('class');
+db.superheroes.find({ "aspects.hairColor": { $in: ["black", "No Hair"] } }).count();
+
+// Exercício 11: Retorne o total de super-heróis que não tenham cabelos pretos ou não sejam carecas.
+
+use('class');
+db.superheroes.find({ "aspects.hairColor": { $nin: ["black", "No Hair"] } }).count();
+
+// OU 
+use('class')
+db.superheroes.countDocuments(
+    { "aspects.hairColor": { $nin: ["black", "No Hair"] } }
+);
+
+// 🚀 Exercício 12: Utilizando o operador $not, retorne o total de super-heróis que não tenham mais de 1.80m de altura.
+
+use('class');
+db.superheroes.find({ "aspects.height": {$not: { $gt: 180}}})
+
+// Exercício 13: Selecione todos os super-heróis que não sejam humanos nem sejam maiores do que 1.80m.
+
+use('class');
+db.superheroes.find({ $nor: [{ race: 'Human'}, {'aspects.height': {$gt: 180}}]})
+
+// Exercício 14: Selecione todos os super-heróis com 1.80m ou 2.00m de altura e que sejam publicados pela Marvel Comics.
+
+use('class');
+db.superheroes.find({
+  $and: [
+    {
+      $or: [{'aspects.height': 180}, {'aspects.height': 200}]
+      },
+    {publisher: 'Marvel Comics'}
+    ]
+  })
+
+// Exercício 15: Selecione todos os super-heróis que pesem entre 80kg e 100kg, sejam Humanos ou Mutantes e não sejam publicados pela DC Comics.
+
+use('class');
+db.superheroes.find({
+  $and: [
+    {
+      'aspects.weight': {$gte: 80, $lte: 100}
+    },
+    {
+      $or: [{race: 'Human'}, {race: 'Mutant'}]
+    },
+    {
+      publisher: {$ne: 'DC Comics'}
+    }
+  ]
+})
+
+//Exercício 16: Retorne o total de documentos que não contêm o campo race.
+
+use('class');
+db.superheroes.find({race: {$exists: false}}).count();
+
+//OU
+use('class')
+db.superheroes.countDocuments(
+    { race: { $exists: false } }
+);
+
+//Exercício 17: Retorne o total de documentos que contêm o campo hairColor.
+
+use('class');
+db.superheroes.find({
+  'aspects.hairColor': {$exists: true}
+}).count();
+
+//Exercício 18: Remova apenas um documento publicado pela Sony Pictures.
+
+use('class');
+db.superheroes.deleteOne({ publisher: 'Sony Pictures'});
+
+//🚀 Exercício 19: Remova todos os documentos publicados pelo George Lucas.
+
+use('class')
+db.superheroes.deleteMany(
+    { publisher: "George Lucas" }
+);

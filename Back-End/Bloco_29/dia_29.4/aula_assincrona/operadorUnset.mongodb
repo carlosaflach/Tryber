@@ -1,0 +1,10 @@
+use('conteudo_trybe');
+db.fruits.find({});
+
+// A operação abaixo remove o campo quantity do documento em que o valor do campo productName seja igual a Banana:
+
+use('conteudo_trybe');
+db.fruits.updateMany(
+  { productName: "Banana" },
+  { $unset: { quantity: "" } }
+);

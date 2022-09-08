@@ -1,0 +1,84 @@
+use('sales')
+db.dropDatabase();
+
+
+use('sales');
+db.supplies.updateOne(
+  {_id: 1},
+  {
+    $push: {
+      items: {
+        $each: [
+          {
+            "name": "notepad",
+            "price":  35.29,
+            "quantity": 2,
+          },
+          {
+            "name": "pens",
+            "price": 56.12,
+            "quantity": 5,
+          },
+          {
+            "name": "envelopes",
+            "price": 19.95,
+            "quantity": 8,
+          },
+        ],
+      },
+    },
+  },
+  { upsert: true },
+);
+
+use('sales');
+db.supplies.updateOne(
+  {_id: 2},
+  {
+    $push: {
+      items: {
+        $each: [
+            {
+              "name" : "pencil",
+              "price" : 5.29,
+              "quantity" : 2,
+            },
+            {
+              "name": "envelopes",
+              "price": 19.95,
+              "quantity": 8,
+            },
+            {
+              "name": "backpack",
+              "price": 80.12,
+              "quantity": 1,
+            },
+            {
+              "name": "pens",
+              "price": 56.12,
+              "quantity": 5,
+            },
+        ],
+      },
+    },
+  },
+  { upsert: true },
+);
+
+use('sales');
+db.supplies.find({});
+
+
+// Digamos que você queira remover do array items os elementos pens e envelopes:
+
+use('sales');
+db.supplies.updateMany(
+  {},
+  {
+    $pull: {
+      items: {
+        name: { $in: ["pens", "envelopes"] },
+      },
+    },
+  },
+);

@@ -11,8 +11,10 @@ describe('Lens Model', () => {
   const lensModel = new LensModel();
 
   before(() => {
-    sinon.stub(lensModel, 'create').resolves(lensMockWithId);
-    sinon.stub(lensModel, 'readOne').resolves(lensMockWithId);
+    sinon.stub(Model, 'create').resolves(lensMockWithId);
+    sinon.stub(Model, 'findOne').resolves(lensMockWithId);
+    sinon.stub(Model, 'find').resolves([lensMockWithId]);
+    sinon.stub(Model, 'findByIdAndDelete').resolves(lensMockWithId);
   });
 
   after(() => {
@@ -27,20 +29,17 @@ describe('Lens Model', () => {
     });
   });
 
-  describe('Searching for a lens', async() => {
-    // Não estou mockando a função isValidObjectId
-
-    beforeEach(() => {
-			sinon.restore();
-		})
-
+  describe('Searching for a lens', () => {
+  
     it('Successfully found', async() => {
+      const stub = sinon.stub(Mongoose, 'isValidObjectId').resolves(true);
       const lensFound = await lensModel.readOne('62cf1fc6498565d94eba52cd');
       expect(lensFound).to.be.deep.equal(lensMockWithId);
+      stub.restore();
     });
 
     it('_id is not valid', async () => {
-      sinon.stub(Mongoose, 'isValidObjectId').returns(false);
+      const stub = sinon.stub(Mongoose, 'isValidObjectId').returns(false);
 			let err: any;
 			try {
 				await lensModel.readOne('123ERRADO');
@@ -48,11 +47,12 @@ describe('Lens Model', () => {
 				err = error;
 			}
 			expect(err.message).to.be.eq(Errors.InvalidMongoId);
+      stub.restore();
 		});
 			
   });
 
-  describe('updating a frame', () => {
+  describe('updating a lens', () => {
 
 		beforeEach(() => {
 			sinon.restore();
@@ -61,6 +61,7 @@ describe('Lens Model', () => {
 			it('Successfully updated', async () => {
 				sinon.stub(Mongoose, 'isValidObjectId').returns(true);
 				sinon.stub(Model, 'findByIdAndUpdate').resolves(lensMockWithId);
+        sinon.stub(Model, 'find').resolves([lensMockWithId]);
 
 				const updated = await lensModel.update('any-id', { degree: 10, blueLightFilter: true, antiGlare: false});
 
@@ -90,7 +91,29 @@ describe('Lens Model', () => {
 
 				expect(updated).to.be.deep.equal(null);
 			});
-	})
+	});
+
+  describe('searching all lens', () => {
+    it('successfully found', async () => {
+      const lensFound = await lensModel.readAll();
+      expect(lensFound).to.be.an('array');
+    });
+  });
+
+  describe('deleting a lens', () => {
+    it('successful deletion', async () => {
+      const lensDeleted = await lensModel.destroy('62cf1fc6498565d94eba52cd');
+      expect(lensDeleted).to.be.deep.equal(lensMockWithId);
+    });
+  
+    it('_id not found', async () => {
+      try {
+        await lensModel.destroy('123ERRADO');
+      } catch (error: any) {
+        expect(error.message).to.be.eq('InvalidMongoId');
+      }
+    });
+  });
   
   
 })

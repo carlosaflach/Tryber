@@ -37,7 +37,7 @@ describe('Frame Model', () => {
 			
 	
 		it('successfully found', async () => {
-			const stub = sinon.stub(Mongoose, 'isValidObjectId').resolves(true);
+			const stub = sinon.stub(Mongoose, 'isValidObjectId').returns(true);
 			const framesFound = await frameModel.readOne('62cf1fc6498565d94eba52cd');
 			expect(framesFound).to.be.deep.equal(frameMockWithId);
 			stub.restore();

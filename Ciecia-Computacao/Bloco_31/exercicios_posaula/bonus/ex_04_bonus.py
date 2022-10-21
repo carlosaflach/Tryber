@@ -21,6 +21,7 @@ print(total_price(50, 'A'))
 print(total_price(20, 'G'))
 print(total_price(50, 'G'))
 
+
 def fuel_price(type, liters):
     if type == "A":
         price = 1.90

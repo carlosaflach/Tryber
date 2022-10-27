@@ -1,38 +1,13 @@
-class Liquidificador:
+from eletrodomestico import Eletrodomestico
+
+
+class Liquidificador(Eletrodomestico):
     def __init__(self, cor, potencia, voltagem, preco):
         # Encapsulamento, onde podem ter atributiso privados e publicos
-        self.preco = preco
-        self.__cor = cor
-        self.__potencia = potencia
-        self.__voltagem = voltagem
-        self.__ligado = False
-        self.__velocidade = 0
-        self.__velocidade_maxima = 3
-        self.__amperagem_atual_no_motor = 0
+        def __init__(self, cor, potencia, voltagem, preco):
+            # chamando o método da classe mãe
 
-    # Getter
-    @property
-    def cor(self):
-        return self.__cor
-
-    # Setter
-    @cor.setter
-    def cor(self, nova_cor):
-        self.__cor = nova_cor
-
-    def ligar(self, velocidade):
-        self.__velocidade = velocidade
-        self.__amperagem_atual_no_motor = (
-            (self.__potencia / self.__voltagem) / self.__velocidade_maxima
-        ) * velocidade
-        self.__ligado = True
-
-    def desligar(self):
-        self.__ligado = False
-        self.__velocidade = 0
-
-    def esta_ligado(self):
-        return self.__ligado
+            super().__init__(cor, potencia, voltagem, preco)
 
 
 liquidificador_azul = Liquidificador("Azul", 110, 127, 200)
@@ -41,7 +16,7 @@ liquidificador_vermelho = Liquidificador("Vermelho", 250, 220, 100)
 
 # Abstração onde o usuário não precisa saber o que aconteceu,
 # somente chmar o método.
-if __name__ == '__main__':
+if __name__ == "__main__":
     liquidificador_vermelho.ligar(1)
     print("Esta ligado?", liquidificador_vermelho.esta_ligado())
 

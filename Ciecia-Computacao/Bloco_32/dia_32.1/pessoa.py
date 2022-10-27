@@ -1,29 +1,17 @@
-import liquidificador
-import geladeira
-
-liquidificador_vermelho = liquidificador.Liquidificador(
-    "vermelho", 200, 220, 200
-)
+from eletrodomestico import Eletrodomestico
 
 
 class Pessoa:
     def __init__(self, nome, saldo_na_conta):
         self.nome = nome
         self.saldo_na_conta = saldo_na_conta
-        self.liquidificador = None
-        self.geladeira = None
+        self.eletrodomesticos = []
 
-    def comprar_liquidificador(
-        self, liquidificador: liquidificador.Liquidificador
-    ):
-        if liquidificador.preco <= self.saldo_na_conta:
-            self.saldo_na_conta -= liquidificador.preco
-            self.liquidificador = liquidificador
-
-    def comprar_geladeira(self, geladeira: geladeira.Geladeira):
-        if geladeira.preco <= self.saldo_na_conta:
-            self.saldo_na_conta -= geladeira.preco
-            self.geladeira = geladeira
+    # Permitindo a aquisição de qualquer eletrodoméstico
+    def comprar_eletrodomestico(self, eletrodomestico: Eletrodomestico):
+        if eletrodomestico.preco >= self.saldo_na_conta:
+            self.saldo_na_conta -= eletrodomestico.preco
+            self.eletrodomestico.append(eletrodomestico)
 
     def __str__(self) -> str:
         if self.geladeira:
@@ -35,10 +23,6 @@ class Pessoa:
         return f"{self.nome} não possui uma geladeira"
 
 
-geladeira_branca = geladeira.Geladeira("branca", 250, 220, 100)
 pessoa_cozinheira = Pessoa("Jacquin", 1000)
-pessoa_cozinheira.comprar_geladeira(geladeira_branca)
-
-pessoa_cozinheira.comprar_liquidificador(liquidificador_vermelho)
 
 print(pessoa_cozinheira)

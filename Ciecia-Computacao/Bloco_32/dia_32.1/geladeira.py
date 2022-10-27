@@ -1,12 +1,8 @@
-class Geladeira:
-    def __init__(self, cor, potencia, voltagem, preco) -> None:
-        self.__cor = cor
-        self.__potencia = potencia
-        self.__voltagem = voltagem
-        self.preco = preco
-        self.__ligado = False
+from eletrodomestico import Eletrodomestico
 
-    def cor(self):
-        return self.__cor
 
-      
+class Geladeira(Eletrodomestico):
+    def __init__(self, cor, potencia, voltagem, preco, quantidade_de_portas=1):
+        super().__init__(cor, potencia, voltagem, preco)
+        # sobrescrita do método da classe mãe
+        self.quantidade_de_portas = quantidade_de_portas

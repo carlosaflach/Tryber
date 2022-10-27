@@ -3,6 +3,7 @@ with open("people.txt", mode="r") as file:
     for line in file:
         # captura estudante por linha
         nota_estudante = line
+        # print(nota_estudante)
         # quebra a linha no espaço e salva em um array
         nota_estudante = nota_estudante.split(' ')
         # print(nota_estudante)

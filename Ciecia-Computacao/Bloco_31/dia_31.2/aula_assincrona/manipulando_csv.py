@@ -1,13 +1,5 @@
 import csv
 
-
-# with open("graduacao_unb.csv", encoding="utf-8") as file:
-#     graduacao_reader = csv.reader(file, delimiter=",", quotechar='"')
-#     # Usando o conceito de desempacotamento
-#     header, *data = graduacao_reader
-
-# print(data)
-
 with open("graduacao_unb.csv", encoding="utf8") as file:
     graduacao_reader = csv.reader(file, delimiter=",", quotechar='"')
     # Usando o conceito de desempacotamento
@@ -20,6 +12,7 @@ for row in data:
         group_by_department[department] = 0
     group_by_department[department] += 1
 
+# print(group_by_department.items())
 # Escreve o relatório em .csv
 # Abre um arquivo para escrita
 with open("department_report.csv", "w", encoding="utf-8") as file:

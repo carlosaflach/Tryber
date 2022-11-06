@@ -1,4 +1,4 @@
-class Liquidificador:
+class Eletrodomestico:
     def __init__(self, cor, potencia, tensao, preco):
         self.preco = preco
         self.cor = cor
@@ -28,16 +28,10 @@ class Liquidificador:
     def esta_ligado(self):
         return self.__ligado
 
+    @property
+    def cor(self):
+        return self.__cor.upper()
 
-liquidificador_vermelho = Liquidificador("Vermelho", 250, 220, 100)
-
-if __name__ == "__main__":
-    print(liquidificador_vermelho.cor)  # saida cor.
-    # print(liquidificador_vermelho.__velocidade_maxima) #saida erro.
-
-    liquidificador_vermelho.ligar(1)
-    print("Está ligado?", liquidificador_vermelho.esta_ligado())
-    # Está ligado? True
-    liquidificador_vermelho.desligar()
-    print("Está ligado?", liquidificador_vermelho.esta_ligado())
-    # Está ligado? False
+    @cor.setter
+    def cor(self, nova_cor):
+        self.__cor = nova_cor

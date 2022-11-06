@@ -1,4 +1,4 @@
-class Liquidificador:
+class Eletrodomestico:
     def __init__(self, cor, potencia, tensao, preco):
         self.preco = preco
         self.cor = cor
@@ -28,16 +28,37 @@ class Liquidificador:
     def esta_ligado(self):
         return self.__ligado
 
+    @property
+    def cor(self):
+        return self.__cor.upper()
 
-liquidificador_vermelho = Liquidificador("Vermelho", 250, 220, 100)
+    @cor.setter
+    def cor(self, nova_cor):
+        self.__cor = nova_cor
 
-if __name__ == "__main__":
-    print(liquidificador_vermelho.cor)  # saida cor.
-    # print(liquidificador_vermelho.__velocidade_maxima) #saida erro.
 
-    liquidificador_vermelho.ligar(1)
-    print("Está ligado?", liquidificador_vermelho.esta_ligado())
-    # Está ligado? True
-    liquidificador_vermelho.desligar()
-    print("Está ligado?", liquidificador_vermelho.esta_ligado())
-    # Está ligado? False
+class Secador(Eletrodomestico):
+    pass
+
+
+class Batedeira(Eletrodomestico):
+    pass
+
+
+class MaquinaDeLavar(Eletrodomestico):
+    pass
+
+
+secador = Secador("Branco", "450", "127", "400")
+batedeira = Batedeira("Prata", "200", "127", "290")
+maquina_de_lavar = MaquinaDeLavar("Preta", "6000", "127", "1300")
+
+print(f"O secador {secador.cor} custa {secador.preco}.")
+print(f"A batedeira {batedeira.cor} custa {batedeira.preco}.")
+print(
+    f"A máquina de lavar {maquina_de_lavar.cor} "
+    f"custa {maquina_de_lavar.preco}."
+)
+# O secador BRANCO custa 400.
+# A batedeira PRATA custa 290.
+# A máquina de lavar PRETA custa 1300.
